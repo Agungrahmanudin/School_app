@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('landing-page/assets/css/templatemo-chain-app-dev.css') }}">
     <link rel="stylesheet" href="{{ asset('landing-page/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('landing-page/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('landing-page/assets/css/custom.css') }}?v={{ time() }}">
 
     @yield('additional_css')
 </head>

@@ -1,5 +1,5 @@
-  <footer id="newsletter">
-    <div class="container">
+<footer id="newsletter" style="margin-top: 0 !important; padding-top: 80px !important; background-color: #f8f9fa !important;">
+    <div class="container-fluid">
       <div class="row">
         <!-- School Info & Logo -->
         <div class="col-lg-4 col-md-6 mb-4">
@@ -18,7 +18,7 @@
               @endphp
               <img src="{{ $footerLogo }}" alt="Logo Sekolah">
             </div>
-            <p style="line-height: 1.7; color: rgba(255,255,255,0.85);">
+            <p class="footer-description-text">
               {{ $profile->footer_description ?? (($profile->school_name ?? 'Sekolah') . ' berkomitmen mencetak generasi unggul yang berkarakter, berkompeten, dan berdaya saing tinggi di era industri global.') }}
             </p>
             @if($profile?->facebook_url || $profile?->instagram_url || $profile?->youtube_url)
@@ -80,19 +80,19 @@
                   <li><a href="#"><i class="fa fa-angle-right me-1"></i> {{ $menu }}</a></li>
                 @endforeach
               </ul>
-              <hr style="border-color: rgba(255,255,255,0.2); margin: 1.5rem 0;">
+              <hr class="footer-contact-hr">
             @endif
             
-            <p style="color: rgba(255,255,255,0.85);"><i class="fa fa-map-marker-alt me-2 text-warning"></i> {{ $profile->address ?? 'Jl. Pendidikan No. 45, Jakarta' }}</p>
-            <p style="color: rgba(255,255,255,0.85);"><i class="fa fa-phone me-2 text-warning"></i> {{ $profile->phone ?? '(021) 7890-1234' }}</p>
-            <p style="color: rgba(255,255,255,0.85);"><i class="fa fa-envelope me-2 text-warning"></i> {{ $profile->email ?? 'info@sekolah.sch.id' }}</p>
-            <p style="color: rgba(255,255,255,0.85);"><i class="fa fa-globe me-2 text-warning"></i> {{ $profile->website ?? 'https://smkn1indonesia.sch.id' }}</p>
+            <p class="footer-contact-info"><i class="fa fa-map-marker-alt me-2 text-primary"></i> {{ $profile->address ?? 'Jl. Pendidikan No. 45, Jakarta' }}</p>
+            <p class="footer-contact-info"><i class="fa fa-phone me-2 text-primary"></i> {{ $profile->phone ?? '(021) 7890-1234' }}</p>
+            <p class="footer-contact-info"><i class="fa fa-envelope me-2 text-primary"></i> {{ $profile->email ?? 'info@sekolah.sch.id' }}</p>
+            <p class="footer-contact-info"><i class="fa fa-globe me-2 text-primary"></i> {{ $profile->website ?? 'https://smkn1indonesia.sch.id' }}</p>
           </div>
         </div>
 
         <!-- Copyright -->
         <div class="col-lg-12">
-          <div class="copyright-text" style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 25px;">
+          <div class="copyright-text" style="border-top: 1px solid #dee2e6 !important; padding-top: 25px;">
             <p>{{ $profile->footer_copyright ?? ('© ' . date('Y') . ' ' . ($profile->school_name ?? 'Sekolah') . '. Hak Cipta Dilindungi Undang-Undang.') }}</p>
           </div>
         </div>
@@ -100,6 +100,11 @@
     </div>
   </footer>
 
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Kembali ke Atas">
+    <i class="fa fa-arrow-up"></i>
+  </button>
 
   <!-- Scripts -->
   <script src="{{ asset('landing-page/vendor/jquery/jquery.min.js') }}"></script>
@@ -109,4 +114,27 @@
   <script src="{{ asset('landing-page/assets/js/imagesloaded.js') }}"></script>
   <script src="{{ asset('landing-page/assets/js/popup.js') }}"></script>
   <script src="{{ asset('landing-page/assets/js/custom.js') }}"></script>
+
+  <!-- Back to Top Script -->
+  <script>
+    $(document).ready(function() {
+      var backToTopBtn = $('#backToTop');
+      
+      // Show button when scroll down 300px
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 300) {
+          backToTopBtn.addClass('show');
+        } else {
+          backToTopBtn.removeClass('show');
+        }
+      });
+      
+      // Smooth scroll to top
+      backToTopBtn.click(function() {
+        $('html, body').animate({scrollTop: 0}, 600);
+        return false;
+      });
+    });
+  </script>
+
   @yield('scripts')

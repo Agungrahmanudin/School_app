@@ -20,6 +20,7 @@ Route::get('/profil-sekolah', [HomeController::class, 'profile'])->name('landing
 Route::get('/ekstrakurikuler', [HomeController::class, 'extracurriculars'])->name('landing.extracurriculars');
 Route::get('/ekstrakurikuler/{id}', [HomeController::class, 'extracurricularDetail'])->name('landing.extracurriculars.detail');
 Route::get('/galeri', [HomeController::class, 'gallery'])->name('landing.gallery');
+Route::get('/galeri/{id}', [HomeController::class, 'galleryShow'])->name('landing.gallery.show');
 Route::get('/berita-kegiatan', [HomeController::class, 'news'])->name('landing.news');
 Route::get('/berita-kegiatan/{slug}', [HomeController::class, 'newsDetail'])->name('landing.news.detail');
 Route::get('/jurusan', [HomeController::class, 'majors'])->name('landing.majors');

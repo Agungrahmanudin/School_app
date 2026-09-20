@@ -20,23 +20,23 @@
   align-items: center;
   justify-content: flex-start !important;
   list-style: none;
-  margin: 0;
+  margin: 0 0 0 80px;
   padding: 0;
-  gap: 5px;
+  gap: 0px;
   flex: 1;
 }
 .header-area .main-nav .nav li {
   display: flex !important;
   align-items: center !important;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .header-area .main-nav .nav li a,
 .header-area .main-nav .nav li.scroll-to-section a,
 .header-area .main-nav ul.nav li a {
   display: flex !important;
   align-items: center !important;
-  padding: 5px 18px !important;
+  padding: 5px 12px !important;
   font-size: 15px !important;
   font-weight: 500 !important;
   color: #2a2a2a !important;
@@ -56,6 +56,18 @@
   color: #2a2a2a !important;
   opacity: 1 !important;
 }
+.header-area .main-nav .nav li a:hover::after,
+.header-area .main-nav .nav li.scroll-to-section a:hover::after,
+.header-area .main-nav ul.nav li a:hover::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 12px !important;
+  width: calc(100% - 24px) !important;
+  height: 2px !important;
+  background: #0d6efd !important;
+  border-radius: 1px !important;
+}
 .header-area .main-nav .nav li a.active,
 .header-area .main-nav .nav li.scroll-to-section a.active,
 .header-area .main-nav ul.nav li a.active {
@@ -67,12 +79,12 @@
 .header-area .main-nav .nav li a.active::after {
   content: '' !important;
   position: absolute !important;
-  bottom: 6px !important;
-  left: 18px !important;
-  right: 18px !important;
+  bottom: 20px !important;
+  left: 12px !important;
+  width: calc(100% - 24px) !important;
   height: 2px !important;
   background: #0d6efd !important;
-  border-radius: 2px !important;
+  border-radius: 1px !important;
 }
 .header-area .main-nav .nav li.nav-cta {
   margin-left: auto !important;

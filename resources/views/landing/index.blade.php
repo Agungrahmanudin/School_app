@@ -75,7 +75,7 @@
   </div>
 
   <!-- ***** Informasi Jumlah Guru dan Siswa (Poin 3) via Template .services ***** -->
-  <div id="services" class="services section" style="background: #fff;">
+  <div id="services" class="services section services-section-white">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -162,7 +162,7 @@
   </div>
 
   <!-- ***** Seksi Sambutan Kepala Sekolah, Visi & Misi (Referensi: SMKN 1 Talaga) ***** -->
-  <div id="about" class="about-us section" style="background: #f8f9fa;">
+  <div id="about" class="about-us section about-section-gray">
     <div class="container">
       <!-- Section Title -->
       <div class="row mb-4">
@@ -190,10 +190,23 @@
                 <div class="principal-badge">
                   @php
                     $principalAvatar = asset('assets_admin/assets/images/avatars/avatar-1.png');
+                    $principalName = $profile->principal_name ?? 'Muchamad Eki S.A., S.Kom.';
+                    
+                    // Gunakan data dari tabel teachers jika ada
+                    if(isset($principal) && $principal) {
+                      if (!empty($principal->photo)) {
+                        if (str_starts_with($principal->photo, 'storage/') || str_starts_with($principal->photo, 'uploads/')) {
+                          $principalAvatar = asset($principal->photo);
+                        } elseif (file_exists(public_path($principal->photo))) {
+                          $principalAvatar = asset($principal->photo);
+                        }
+                      }
+                      $principalName = $principal->name;
+                    }
                   @endphp
                   <img src="{{ $principalAvatar }}" alt="Kepala Sekolah">
                   <div>
-                    <h6>{{ $profile->principal_name ?? 'Muchamad Eki S.A., S.Kom.' }}</h6>
+                    <h6>{{ $principalName }}</h6>
                     <small>Kepala Sekolah {{ $profile->school_name ?? 'SMKN 1 Talaga' }}</small>
                   </div>
                 </div>
@@ -227,12 +240,12 @@
               </div>
             </div>
             <div class="vm-body">
-              <div class="p-3 bg-light rounded-3 border-start border-4 border-primary mb-3">
-                <em class="fw-bold text-dark" style="font-size: 15px;">
+              <div class="p-3 bg-light rounded-3 border-start border-4 border-secondary mb-3">
+                <em class="fw-bold text-dark vision-quote-text">
                   "{{ $profile->vision ?? 'Terwujudnya Peserta Didik yang Religius, Vokasional, Entrepreneurship dan Profesional.' }}"
                 </em>
               </div>
-              <p class="text-muted mb-0" style="font-size: 13.5px;">
+              <p class="text-muted mb-0 vision-description-text">
                 Mencerminkan tekad bersama dalam membangun ekosistem pendidikan kejuruan yang berdaya saing global dan berlandaskan budi pekerti luhur.
               </p>
             </div>
@@ -243,7 +256,7 @@
         <div class="col-lg-7 mb-4">
           <div class="vm-container">
             <div class="vm-header">
-              <div class="vm-icon" style="background: #dcfce7; color: #16a34a;">
+              <div class="vm-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white;">
                 <i class="fa fa-bullseye"></i>
               </div>
               <div>
@@ -388,7 +401,7 @@ a:hover .major-card,
 .major-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -430,7 +443,7 @@ a:hover .major-card,
 }
 .concentration-list li {
   font-size: 13px;
-  color: #0d6efd;
+  color: #6c757d;
   padding: 3px 0;
 }
 .concentration-list li:before {
@@ -505,8 +518,8 @@ a:hover .major-card,
   justify-content: center;
   flex-shrink: 0;
   font-size: 18px;
-  background: #dcfce7;
-  color: #16a34a;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
 }
 @media (max-width: 991px) {
   .hero-float-card.top-right { right: 8px; }
@@ -551,7 +564,7 @@ a:hover .major-card,
           @endphp
           <div class="col-lg-4 col-md-6 mb-4">
             <a href="{{ route('landing.extracurriculars.detail', $extra->id) }}" class="text-decoration-none">
-            <div class="service-item {{ $serviceClass }}" style="cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            <div class="service-item {{ $serviceClass }}">
               @if($extraImage)
                 <div class="icon" style="background-image: none; width: 80px; height: 80px; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
                   <img src="{{ $extraImage }}" alt="{{ $extra->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
@@ -673,9 +686,21 @@ a:hover .major-card,
                 <img src="{{ $galleryImage }}" alt="{{ $gallery->title }}">
               </div>
               <div class="news-body">
-                <div class="news-date"><i class="fa fa-images text-primary"></i> {{ $gallery->created_at ? $gallery->created_at->format('d M Y') : 'Dokumentasi' }}</div>
-                <h4 class="news-title">{{ Str::limit($gallery->title, 50) }}</h4>
+                <div class="news-date">
+                  <i class="fa fa-calendar-alt text-primary"></i>
+                  <span>{{ $gallery->created_at ? $gallery->created_at->format('d M Y') : 'Dokumentasi' }}</span>
+                </div>
+                <h5 class="news-title">
+                  <a href="{{ route('landing.gallery.show', $gallery->id) }}">
+                    {{ Str::limit($gallery->title, 50) }}
+                  </a>
+                </h5>
                 <p class="news-excerpt">{{ Str::limit($gallery->description, 90) }}</p>
+                <div class="news-footer mt-auto">
+                  <a href="{{ route('landing.gallery.show', $gallery->id) }}" class="btn-stat-link">
+                    Lihat Detail <i class="fa fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

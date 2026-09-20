@@ -1,0 +1,1528 @@
+/* ====================================================
+   CUSTOM CSS - HOVER EFFECTS FOR ALL CARDS (BLUE HOVER)
+   ==================================================== */
+
+/* School Statistics Cards */
+.school-stat-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.school-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4b8ef1 0%, #667eea 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.school-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(75, 142, 241, 0.25);
+}
+
+.school-stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.school-stat-card h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #495057;
+  margin: 15px 0 10px;
+  transition: all 0.3s ease;
+}
+
+.school-stat-card:hover h3 {
+  color: #4b8ef1;
+  transform: scale(1.05);
+}
+
+.school-stat-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.school-stat-card:hover h5 {
+  color: #4b8ef1;
+}
+
+.school-stat-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.stat-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.school-stat-card:hover .stat-icon-wrapper {
+  transform: rotate(360deg) scale(1.15);
+  background: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%) !important;
+  box-shadow: 0 8px 30px rgba(75, 142, 241, 0.6) !important;
+}
+
+.stat-icon-blue {
+  background: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%);
+  box-shadow: 0 4px 15px rgba(75, 142, 241, 0.3);
+}
+
+.stat-icon-green {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.stat-icon-orange {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.stat-icon-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.stat-icon-wrapper i {
+  font-size: 38px;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.3);
+}
+
+.btn-stat-link {
+  display: inline-flex;
+  align-items: center;
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-stat-link i {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.school-stat-card:hover .btn-stat-link {
+  color: #4b8ef1;
+}
+
+.school-stat-card:hover .btn-stat-link i {
+  transform: translateX(5px);
+}
+
+/* Sambutan Kepala Sekolah Card */
+.speech-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.speech-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #4b8ef1 0%, #667eea 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.speech-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(75, 142, 241, 0.2);
+}
+
+.speech-box:hover::before {
+  transform: scaleY(1);
+}
+
+.speech-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.speech-box:hover .speech-title {
+  color: #4b8ef1;
+}
+
+.speech-content {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.principal-badge {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.speech-box:hover .principal-badge {
+  background: #e3f2fd;
+}
+
+.principal-badge img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #adb5bd;
+  transition: all 0.3s ease;
+}
+
+.speech-box:hover .principal-badge img {
+  transform: scale(1.1);
+  border-color: #4b8ef1;
+}
+
+.principal-badge h6 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin: 0;
+}
+
+.principal-badge small {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Visi Misi Cards */
+.vm-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.vm-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(75, 142, 241, 0.2);
+}
+
+.vm-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 3px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.vm-container:hover .vm-header {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-bottom-color: #4b8ef1;
+}
+
+.vm-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: all 0.3s ease;
+}
+
+.vm-container:hover .vm-icon {
+  background: #4b8ef1;
+  color: white;
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(75, 142, 241, 0.4);
+}
+
+.vm-header h5 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0;
+}
+
+.vm-header small {
+  color: #666;
+  font-size: 13px;
+}
+
+.vm-body {
+  padding: 25px;
+}
+
+.vm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vm-list li {
+  padding: 12px 0 12px 35px;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.7;
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.vm-list li:last-child {
+  border-bottom: none;
+}
+
+.vm-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  background: #6c757d;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.vm-container:hover .vm-list li {
+  padding-left: 40px;
+}
+
+.vm-container:hover .vm-list li::before {
+  background: #4b8ef1;
+  transform: scale(1.1);
+}
+
+/* News Cards */
+.school-news-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.school-news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(75, 142, 241, 0.25);
+}
+
+.news-img-box {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.school-news-card:hover .news-img-box img {
+  transform: scale(1.1);
+}
+
+.news-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(75, 142, 241, 0.95);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.news-badge i {
+  font-size: 9px;
+  margin-right: 3px;
+}
+
+.school-news-card:hover .news-badge {
+  background: rgba(75, 142, 241, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(75, 142, 241, 0.4);
+}
+
+/* Badge Gallery (Green) */
+.news-badge.bg-success {
+  background: rgba(16, 185, 129, 0.95) !important;
+}
+
+.school-news-card:hover .news-badge.bg-success {
+  background: rgba(16, 185, 129, 1) !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.news-body {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-date {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.news-title a {
+  color: #2a2a2a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.school-news-card:hover .news-title a {
+  color: #4b8ef1;
+}
+
+.news-excerpt {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.news-footer {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Major Cards */
+.major-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 30px 25px;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.major-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(75, 142, 241, 0.05) 0%, rgba(102, 126, 234, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+a:hover .major-card,
+.major-card:hover {
+  box-shadow: 0 12px 35px rgba(75, 142, 241, 0.25);
+  transform: translateY(-8px);
+  background: #fff;
+}
+
+a:hover .major-card::before,
+.major-card:hover::before {
+  opacity: 1;
+}
+
+.major-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+a:hover .major-card .major-icon,
+.major-card:hover .major-icon {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(75, 142, 241, 0.4);
+  background: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%);
+}
+
+.major-icon i {
+  font-size: 36px;
+  color: white;
+}
+
+.major-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+a:hover .major-card .major-title,
+.major-card:hover .major-title {
+  color: #4b8ef1;
+}
+
+.major-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.major-concentration {
+  border-top: 1px solid #dee2e6;
+  padding-top: 15px;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s ease;
+}
+
+a:hover .major-card .major-concentration,
+.major-card:hover .major-concentration {
+  border-top-color: #4b8ef1;
+}
+
+.concentration-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+a:hover .major-card .concentration-label,
+.major-card:hover .concentration-label {
+  color: #4b8ef1;
+}
+
+.concentration-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.concentration-list li {
+  font-size: 13px;
+  color: #0d6efd;
+  padding: 3px 0;
+  transition: all 0.3s ease;
+}
+
+.concentration-list li:before {
+  content: "→ ";
+  margin-right: 5px;
+  transition: margin-right 0.3s ease;
+}
+
+a:hover .major-card .concentration-list li,
+.major-card:hover .concentration-list li {
+  padding-left: 5px;
+}
+
+a:hover .major-card .concentration-list li:before,
+.major-card:hover .concentration-list li:before {
+  margin-right: 10px;
+}
+
+/* Service Item Cards (Ekstrakurikuler) */
+.service-item {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  height: 100%;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4b8ef1 0%, #667eea 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+a:hover .service-item,
+.service-item:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 12px 35px rgba(75, 142, 241, 0.25) !important;
+}
+
+a:hover .service-item::before,
+.service-item:hover::before {
+  transform: scaleX(1);
+}
+
+.service-item .icon {
+  transition: all 0.3s ease;
+}
+
+a:hover .service-item .icon,
+.service-item:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-item h4 {
+  transition: color 0.3s ease;
+}
+
+a:hover .service-item h4,
+.service-item:hover h4 {
+  color: #4b8ef1;
+}
+
+/* School Profile Photo */
+.school-profile-photo-wrap {
+  transition: transform 0.3s ease;
+}
+
+.speech-box:hover .school-profile-photo-wrap {
+  transform: scale(1.02);
+}
+
+.school-profile-photo {
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.speech-box:hover .school-profile-photo {
+  border-color: #4b8ef1;
+  box-shadow: 0 8px 25px rgba(75, 142, 241, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .school-stat-card:hover,
+  .speech-box:hover,
+  .vm-container:hover,
+  .school-news-card:hover,
+  .major-card:hover,
+  .service-item:hover {
+    transform: translateY(-5px);
+  }
+}
+
+
+/* Footer Improvements */
+footer#newsletter {
+  background: #f8f9fa !important;
+  background-image: none !important;
+  background-color: #f8f9fa !important;
+  padding: 70px 0 30px;
+  color: #2a2a2a;
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+footer#newsletter .container,
+footer#newsletter .container-fluid {
+  max-width: 100%;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0;
+}
+
+@media (min-width: 1400px) {
+  footer#newsletter .container,
+  footer#newsletter .container-fluid {
+    max-width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  footer#newsletter .container,
+  footer#newsletter .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  footer#newsletter .container,
+  footer#newsletter .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+footer .footer-widget h4 {
+  color: #2a2a2a;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+footer .footer-widget h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 3px;
+  background: #4b8ef1;
+  border-radius: 2px;
+}
+
+footer .footer-widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer-widget ul li {
+  margin-bottom: 12px;
+}
+
+footer .footer-widget ul li a {
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+footer .footer-widget ul li a:hover {
+  color: #4b8ef1;
+  padding-left: 5px;
+}
+
+footer .footer-widget ul li a i {
+  transition: transform 0.3s ease;
+}
+
+footer .footer-widget ul li a:hover i {
+  transform: translateX(3px);
+}
+
+footer .footer-school-logo {
+  max-width: 180px;
+  background: transparent;
+  padding: 0;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+footer .footer-school-logo img {
+  max-width: 100%;
+  height: auto;
+  filter: none;
+}
+
+footer .footer-widget p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+footer .footer-widget p i {
+  width: 20px;
+}
+
+footer .footer-widget .d-flex a {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+footer .footer-widget .d-flex a i {
+  transition: all 0.3s ease;
+}
+
+footer .footer-widget .d-flex a:hover {
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Facebook hover - Blue */
+footer .footer-widget .d-flex a[href*="facebook.com"]:hover,
+footer .footer-widget .d-flex a[href*="fb.com"]:hover {
+  background: #1877f2 !important;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4) !important;
+}
+
+/* Instagram hover - Gradient */
+footer .footer-widget .d-flex a[href*="instagram.com"]:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  box-shadow: 0 4px 12px rgba(188, 24, 136, 0.4) !important;
+}
+
+/* YouTube hover - Red */
+footer .footer-widget .d-flex a[href*="youtube.com"]:hover,
+footer .footer-widget .d-flex a[href*="youtu.be"]:hover {
+  background: #ff0000 !important;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4) !important;
+}
+
+/* Twitter/X hover - Black */
+footer .footer-widget .d-flex a[href*="twitter.com"]:hover,
+footer .footer-widget .d-flex a[href*="x.com"]:hover {
+  background: #000000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* LinkedIn hover - Blue */
+footer .footer-widget .d-flex a[href*="linkedin.com"]:hover {
+  background: #0077b5 !important;
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4) !important;
+}
+
+/* TikTok hover - Black/Pink */
+footer .footer-widget .d-flex a[href*="tiktok.com"]:hover {
+  background: #000000 !important;
+  box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4) !important;
+}
+
+footer .copyright-text {
+  margin-top: 40px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+footer .copyright-text p {
+  margin: 0;
+  color: #95a5a6;
+  font-size: 14px;
+}
+
+footer .copyright-text {
+  border-top: 1px solid #34495e !important;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  footer#newsletter {
+    padding: 50px 0 20px;
+  }
+  
+  footer .footer-widget {
+    margin-bottom: 30px;
+  }
+  
+  footer .footer-widget h4 {
+    font-size: 16px;
+  }
+}
+
+
+/* Override Service Item Background - Ekstrakurikuler Cards */
+.service-item,
+.service-item.first-service,
+.service-item.second-service,
+.service-item.third-service,
+.service-item.fourth-service,
+a .service-item,
+a:hover .service-item,
+a:hover .service-item.first-service,
+a:hover .service-item.second-service,
+a:hover .service-item.third-service,
+a:hover .service-item.fourth-service,
+.service-item:hover,
+.service-item.first-service:hover,
+.service-item.second-service:hover,
+.service-item.third-service:hover,
+.service-item.fourth-service:hover {
+  background: #fff !important;
+  background-image: none !important;
+  background-color: #fff !important;
+}
+
+.service-item .icon,
+.service-item.first-service .icon,
+.service-item.second-service .icon,
+.service-item.third-service .icon,
+.service-item.fourth-service .icon {
+  background: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%) !important;
+  background-image: linear-gradient(135deg, #4b8ef1 0%, #3b7dd6 100%) !important;
+}
+
+
+/* ====================================================
+   INTERACTIVE BUTTONS - ALL BUTTONS HOVER EFFECTS
+   ==================================================== */
+
+/* White Buttons (Hero Section) */
+.white-button a,
+.white-button.first-button a,
+.white-button.scroll-to-section a {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.white-button a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4b8ef1 0%, #667eea 100%);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.white-button a:hover {
+  color: #fff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(75, 142, 241, 0.4);
+}
+
+.white-button a:hover::before {
+  left: 0;
+}
+
+.white-button a:hover i {
+  transform: translateX(5px);
+}
+
+.white-button a i {
+  transition: transform 0.3s ease;
+}
+
+/* Primary Buttons (Lihat Semua, etc) */
+a[style*="background: #4b8ef1"],
+a[style*="background:#4b8ef1"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+}
+
+a[style*="background: #4b8ef1"]:hover,
+a[style*="background:#4b8ef1"]:hover {
+  background: #667eea !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 10px 30px rgba(75, 142, 241, 0.5) !important;
+}
+
+a[style*="background: #4b8ef1"]:active,
+a[style*="background:#4b8ef1"]:active {
+  transform: translateY(-1px) scale(1) !important;
+}
+
+a[style*="background: #4b8ef1"] i,
+a[style*="background:#4b8ef1"] i {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+a[style*="background: #4b8ef1"]:hover i,
+a[style*="background:#4b8ef1"]:hover i {
+  transform: translateX(5px);
+}
+
+/* Stat Link Buttons */
+.btn-stat-link {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+}
+
+.btn-stat-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4b8ef1;
+  transition: width 0.3s ease;
+}
+
+.btn-stat-link:hover::after {
+  width: 100%;
+}
+
+.btn-stat-link:hover {
+  padding-right: 10px;
+}
+
+/* Masuk Admin Button (Top Right) */
+.header-area .main-nav .nav li a.gradient-button,
+a.gradient-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+a.gradient-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+a.gradient-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+a.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+/* Navigation Menu Items - Handled in topbar.blade.php */
+
+/* Footer Links */
+footer .footer-widget ul li a {
+  position: relative;
+  padding-left: 0;
+  transition: all 0.3s ease;
+}
+
+footer .footer-widget ul li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: #4b8ef1;
+  transform: translateY(-50%);
+  transition: width 0.3s ease;
+}
+
+footer .footer-widget ul li a:hover {
+  padding-left: 25px;
+  color: #4b8ef1 !important;
+}
+
+footer .footer-widget ul li a:hover::before {
+  width: 20px;
+}
+
+/* Social Media Buttons */
+footer .footer-widget .d-flex a {
+  position: relative;
+  overflow: hidden;
+}
+
+footer .footer-widget .d-flex a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+footer .footer-widget .d-flex a:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* NPSN Badge / Quick Links at Bottom */
+.d-inline-flex a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.d-inline-flex a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4b8ef1;
+  transition: width 0.3s ease;
+}
+
+.d-inline-flex a:hover::after {
+  width: 100%;
+}
+
+.d-inline-flex a:hover {
+  transform: translateX(3px);
+}
+
+/* Button Press Effect - All Buttons */
+a[href]:active,
+button:active,
+.btn:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s ease;
+}
+
+/* Ripple Effect on Click */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* Smooth Cursor Change */
+a, button, .btn, [role="button"] {
+  cursor: pointer !important;
+}
+
+a:hover, button:hover, .btn:hover {
+  cursor: pointer !important;
+}
+
+/* Loading State for Buttons (Optional) */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  transform: translateY(-50%);
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Responsive Button Adjustments */
+@media (max-width: 768px) {
+  .white-button a:hover,
+  a[style*="background: #4b8ef1"]:hover {
+    transform: translateY(-2px) scale(1.01) !important;
+  }
+}
+
+
+/* ====================================================
+   FIX TEXT VISIBILITY ON HOVER
+   ==================================================== */
+
+/* Ensure all text remains visible on hover */
+.school-stat-card p,
+.school-stat-card h5,
+.school-stat-card h3,
+.speech-box p,
+.speech-box .speech-content,
+.vm-container p,
+.vm-list li,
+.school-news-card p,
+.school-news-card .news-excerpt,
+.major-card p,
+.major-desc,
+.concentration-list li,
+.service-item p,
+.service-item h4 {
+  color: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: color 0.3s ease;
+}
+
+/* Card descriptions stay visible */
+.school-stat-card:hover p,
+.vm-container:hover p,
+.school-news-card:hover p,
+.school-news-card:hover .news-excerpt,
+.major-card:hover p,
+.major-card:hover .major-desc,
+a:hover .major-card p,
+a:hover .major-card .major-desc,
+.service-item:hover p,
+a:hover .service-item p {
+  color: #666 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure paragraphs in cards are always visible */
+.school-stat-card p {
+  color: #666 !important;
+}
+
+.major-desc {
+  color: #666 !important;
+}
+
+.service-item p {
+  color: #666 !important;
+}
+
+.vm-list li {
+  color: #444 !important;
+}
+
+.concentration-list li {
+  color: #6c757d !important;
+}
+
+
+/* ====================================================
+   FIX FOOTER SPACING (harus tetap di paling bawah)
+   ==================================================== */
+/* FIX FOOTER SPACING - versi tanpa id */
+footer {
+  padding-top: 80px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Jarak antara judul kolom dan isinya */
+footer .footer-widget h4 {
+  margin-bottom: 25px !important;
+}
+
+/* Jarak garis copyright dengan konten di atasnya */
+footer .copyright-text {
+  margin-top: 40px !important;
+  padding-top: 25px !important;
+}
+
+@media (max-width: 768px) {
+  footer#newsletter {
+    padding: 50px 0 20px !important;
+  }
+}
+
+
+/* ====================================================
+   BACK TO TOP BUTTON
+   ==================================================== */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4b8ef1 0%, #667eea 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(75, 142, 241, 0.4);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+#backToTop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(75, 142, 241, 0.6);
+  background: linear-gradient(135deg, #667eea 0%, #4b8ef1 100%);
+}
+
+#backToTop.show {
+  display: flex;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+
+/* ====================================================
+   INLINE CSS MOVED TO CLASSES
+   ==================================================== */
+
+/* Landing Index - Services Section Background */
+.services-section-white {
+  background: #fff !important;
+}
+
+.services-section-gray {
+  background: #f8f9fa !important;
+}
+
+/* Landing Index - About Section */
+.about-section-gray {
+  background: #f8f9fa !important;
+}
+
+/* Landing Index - Major Section Spacing */
+.major-section-spacing {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+  background: #fff !important;
+}
+
+/* Landing Index - Extracurricular Section Spacing */
+.extra-section-top {
+  padding-top: 60px !important;
+  padding-bottom: 30px !important;
+  background: #f8f9fa !important;
+}
+
+.extra-section-bottom {
+  padding-top: 0px !important;
+  padding-bottom: 100px !important;
+  background: #f8f9fa !important;
+}
+
+/* Landing Index - News Section */
+.news-section-spacing {
+  padding-top: 100px !important;
+  background: #f8f9fa !important;
+}
+
+/* Landing Index - Gallery Section */
+.gallery-section-spacing {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+  background: #fff !important;
+}
+
+/* Gallery & Extracurricular Pages - Top Section */
+.page-section-top {
+  padding-top: 140px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Gallery & Extracurricular Pages - Bottom Section */
+.page-section-bottom {
+  padding-top: 0px !important;
+  padding-bottom: 100px !important;
+}
+
+/* Footer Inline Styles */
+footer#newsletter {
+  margin-top: 40px !important;
+  padding-top: 40px !important;
+  background-color: #f8f9fa !important;
+}
+
+.footer-description-text {
+  line-height: 1.7 !important;
+  color: #666 !important;
+}
+
+.footer-contact-hr {
+  border-color: #dee2e6 !important;
+  margin: 1.5rem 0 !important;
+}
+
+.footer-contact-info {
+  color: #666 !important;
+}
+
+/* Vision Card Text Styling */
+.vision-quote-text {
+  font-size: 15px !important;
+}
+
+.vision-description-text {
+  font-size: 13.5px !important;
+}
+
+/* Mission Icon Background */
+.mission-icon-green {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+}
+
+/* Major Card Custom Image Icon */
+.major-icon-transparent {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.major-icon-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+/* Extracurricular Icon Custom Image */
+.extra-icon-custom {
+  background-image: none !important;
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  margin-bottom: 20px !important;
+}
+
+.extra-icon-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+}
+
+/* Button Styling - View All */
+.btn-view-all-primary {
+  background: #4b8ef1 !important;
+  color: #fff !important;
+  padding: 12px 35px !important;
+  border-radius: 25px !important;
+  box-shadow: 0 4px 15px rgba(75,142,241,0.3) !important;
+}

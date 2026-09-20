@@ -17,13 +17,12 @@
     </div>
 </div>
 
-<div class="services section" style="padding-top: 0px; padding-bottom: 100px;">
+<div class="pricing-tables" style="padding-top: 0px; padding-bottom: 100px;">
     <div class="container">
         <div class="row">
-            @forelse($galleries as $index => $gal)
+            @forelse($galleries as $gal)
                 @php
-                    $serviceClass = ['first-service', 'second-service', 'third-service', 'fourth-service'][$index % 4];
-                    $galleryImg = null;
+                    $galleryImg = asset('landing-page/assets/images/about-right-dec.png');
                     if (!empty($gal->image)) {
                         if (str_starts_with($gal->image, 'storage/') || str_starts_with($gal->image, 'uploads/')) {
                             $galleryImg = asset($gal->image);
@@ -33,17 +32,29 @@
                     }
                 @endphp
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item {{ $serviceClass }}">
-                        @if($galleryImg)
-                            <div style="width: 100%; height: 220px; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
-                                <img src="{{ $galleryImg }}" alt="{{ $gal->title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    <div class="school-news-card">
+                        <div class="news-img-box">
+                            <img src="{{ $galleryImg }}" alt="{{ $gal->title }}">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-date">
+                                <i class="fa fa-calendar-alt text-primary"></i>
+                                <span>{{ $gal->created_at ? $gal->created_at->format('d M Y') : 'Dokumentasi Sekolah' }}</span>
                             </div>
-                        @else
-                            <div class="icon"></div>
-                        @endif
-                        <h4>{{ $gal->title }}</h4>
-                        <p>{{ $gal->description }}</p>
-                        <small class="text-muted"><i class="fa fa-calendar me-1"></i> {{ $gal->created_at ? $gal->created_at->format('d M Y') : 'Dokumentasi Sekolah' }}</small>
+                            <h5 class="news-title">
+                                <a href="{{ route('landing.gallery.show', $gal->id) }}">
+                                    {{ Str::limit($gal->title, 60) }}
+                                </a>
+                            </h5>
+                            <p class="news-excerpt">
+                                {{ Str::limit($gal->description, 100) }}
+                            </p>
+                            <div class="news-footer mt-auto">
+                                <a href="{{ route('landing.gallery.show', $gal->id) }}" class="btn-stat-link">
+                                    Lihat Detail <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @empty
