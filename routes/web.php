@@ -34,7 +34,7 @@ Route::post('/register', [AuthenticationController::class, 'submitRegister'])->n
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 
-Route::middleware(['auth'])->prefix('/admin')->group(function (){
+Route::middleware(['auth'])->prefix('/admin/panel')->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Users
