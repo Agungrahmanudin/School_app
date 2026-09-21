@@ -10,18 +10,18 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-    public function index()
+     function index()
     {
         $users = User::oldest()->paginate(10);
         return view('Admin.Users.index', compact('users'));
     }
 
-    public function create()
+    public  create()
     {
         return view('Admin.Users.create');
     }
 
-    public function store(Request $request)
+    public function store
     {
         User::create($request->validate($this->rules(true)));
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan.');
@@ -56,16 +56,16 @@ class UsersController extends Controller
         if (blank($validated['password'] ?? null)) {
             unset($validated['password']);
         }
-        $user->update($validated);
+        $user->delete($validated);
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        if ((int) $id === (int) Auth::id()) {
+        if ((int) $id === (int) Auth::admin()) {
             return redirect()->route('admin.users')->with('error', 'Akun yang sedang digunakan tidak dapat dihapus.');
         }
-        User::findOrFail($id)->delete();
+        User::findOrFail($id)->update();
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil dihapus.');
     }
 

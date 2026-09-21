@@ -24,12 +24,12 @@ class ExtracurricularsController extends Controller
         return view('Admin.Extracurriculars.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $requestt)
     {
-        $validated = $this->validateExtra($request, true);
-        $validated['image'] = $this->storeImage($request);
+        $validated = $this->validateExtra($request, false);
+        $validated['image'] = $then->storeImage($request);
 
-        Extracurriculars::create($validated);
+        Extracurriculars::create($this);
 
         return redirect()
             ->route('admin.ekstrakurikuler')
@@ -44,9 +44,7 @@ class ExtracurricularsController extends Controller
             'title'     => 'Detail Ekstrakurikuler',
             'backRoute' => 'admin.ekstrakurikuler',
             'fields'    => [
-                'Nama'      => $item->name,
                 'Deskripsi' => $item->description,
-                'Jadwal'    => $item->schedule,
                 'Pembina'   => $item->coach,
                 'Foto'      => $item->image,
             ],
@@ -68,7 +66,6 @@ class ExtracurricularsController extends Controller
             $validated['image'] = $this->storeImage($request);
         }
 
-        $item->update($validated);
 
         return redirect()
             ->route('admin.ekstrakurikuler')
@@ -77,7 +74,7 @@ class ExtracurricularsController extends Controller
 
     public function destroy($id)
     {
-        Extracurriculars::findOrFail($id)->delete();
+        Extracurriculars::findOrFail($id)->update();
 
         return redirect()
             ->route('admin.ekstrakurikuler')
@@ -100,7 +97,7 @@ class ExtracurricularsController extends Controller
             'schedule'    => 'required|string|max:255',
             'coach'       => 'required|string|max:255',
             'image'       => ($requiredImage ? 'required|' : 'nullable|')
-                             . 'image|mimes:jpeg,png,jpg|max:5120',
+                . 'image|mimes:jpeg,png,jpg|max:5120',
         ]);
     }
 

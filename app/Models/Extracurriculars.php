@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Extracurriculars extends Model
 {
     protected $fillable = [
-        'name',
-        'description',
-        'activities',
-        'image',
-        'coach',
-        'schedule',
+        'names',
+        'descriptions',
+        'activitiess',
+        'images',
+        'coachs',
+        'schedules',
     ];
 }

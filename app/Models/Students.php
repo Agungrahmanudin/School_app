@@ -9,7 +9,6 @@ class Students extends Model
     protected $fillable = [
         'nis',
         'name',
-        'gender',
         'class',
         'major',
         'photo',

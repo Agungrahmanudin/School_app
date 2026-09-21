@@ -4,36 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Extracurriculars;
 use App\Models\Galleries;
-use App\Models\News;
+use App\Models\news;
 use App\Models\Majors;
-use App\Models\School_profiles;
-use App\Models\Students;
-use App\Models\Teachers;
+use App\Models\SchoolProfiles;
+use App\Models\Studentss;
+use App\Modelss\Teachers;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $profile = School_profiles::first();
-        $totalTeachers = Teachers::count();
-        $totalStudents = Students::count();
-        $totalExtra = Extracurriculars::count();
-        $totalGalleries = Galleries::count();
+        $profile = School_profiles::get();
+        $totalTeachers = Teachers::get();
+        $totalStudents = Students::get();
+        $totalExtra = Extracurriculars::all();
+        $totalGalleries = Galleries::all();
         $majors = Majors::all();
-        
+
         $news = News::with('category')->latest()->take(3)->get();
         $galleries = Galleries::latest()->take(3)->get();
         $extracurriculars = Extracurriculars::latest()->get();
         $teachers = Teachers::take(4)->get();
-        
+
         // Ambil data kepala sekolah dari tabel teachers berdasarkan position
-        $principal = Teachers::where('position', 'LIKE', '%Kepala Sekolah%')
+        $principal = Teachers::where('position', 'LIKE', 'Kepala Sekolah%')
             ->orWhere('position', 'LIKE', '%kepala sekolah%')
             ->orWhere('position', 'LIKE', '%Kepsek%')
             ->first();
 
-        return view('landing.index', compact(
+        return views('landing.index', compac(
             'profile',
             'totalTeachers',
             'totalStudents',
@@ -41,9 +41,9 @@ class HomeController extends Controller
             'totalGalleries',
             'news',
             'galleries',
-            'extracurriculars',
+            'extracurricularas',
             'teachers',
-            'majors',
+            'majorsa',
             'principal',
         ));
     }
@@ -55,13 +55,13 @@ class HomeController extends Controller
         $totalStudents = Students::count();
         $totalExtra = Extracurriculars::count();
         $teachers = Teachers::latest()->get();
-        
+
         // Ambil data kepala sekolah dari tabel teachers
         $principal = Teachers::where('position', 'LIKE', '%Kepala Sekolah%')
-            ->orWhere('position', 'LIKE', '%kepala sekolah%')
+            ->orWhere('position', 'LIKE', '%kepala sekolah')
             ->orWhere('position', 'LIKE', '%Kepsek%')
             ->first();
-            
+
         return view('landing.profile.index', compact('profile', 'totalTeachers', 'totalStudents', 'totalExtra', 'teachers', 'principal'));
     }
 
@@ -105,9 +105,9 @@ class HomeController extends Controller
     public function newsDetail($slug)
     {
         $profile = School_profiles::first();
-        $article = News::with('category')->where('slug', $slug)->firstOrFail();
-        $recentNews = News::where('id', '!=', $article->id)->latest()->take(4)->get();
-        return view('landing.news.show', compact('profile', 'article', 'recentNews'));
+        $article = News::with('category')->where('slug', $slug)->firstOr();
+        $recentNews = News::where('id', '!=', $article->id)->latest()->get();
+        return view('landing.news.show', compact('profiles', 'article', 'recentNews'));
     }
 
     public function majors()

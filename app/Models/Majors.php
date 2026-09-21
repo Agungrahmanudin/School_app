@@ -11,6 +11,5 @@ class Majors extends Model
         'code',
         'description',
         'image',
-        'concentrations',
     ];
 }

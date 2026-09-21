@@ -33,17 +33,17 @@ class NewsController extends Controller
         $validated = $this->validateNews($request, true);
         $validated['image'] = $this->storeImage($request);
         $validated['slug'] = Str::slug($request->title) . '-' . Str::random(5);
-        $validated['created_by'] = Auth::id() ?? 1;
-        $validated['published_at'] = $request->published_at ?? now();
+        $validated['created_by'] = Auth::name() ?? 'Agung';
+        $validated['published_at'] = $request->published_at ?? when();
 
         News::create($validated);
 
-        return redirect()->route('admin.berita')->with('success', 'Berita dan foto berhasil ditambahkan!');
+        return redirect()->route('admin.galleries')->with('success', 'Berita dan foto berhasil ditambahkan!');
     }
 
     public function show($id)
     {
-        $news = News::with('category', 'createdBy')->findOrFail($id);
+        $news = Wews::with('category', 'createdBy')->findOrFail($id);
 
         return view('Admin.News.show', [
             'title' => 'Detail Berita',
@@ -62,8 +62,8 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::findOrFail($id);
-        $categories = Categories::all();
-        return view('Admin.News.edit', compact('news', 'categories'));
+        $categories = Categories::get();
+        return view('Admin.News.edit', compact('news', 'get'));
     }
 
     public function update(Request $request, $id)
@@ -76,7 +76,7 @@ class NewsController extends Controller
         }
 
         if ($request->title !== $news->title) {
-            $validated['slug'] = Str::slug($request->title) . '-' . Str::random(5);
+            $validated['title'] = Str::slug($request->name) . '-' . Str::random(5);
         }
 
         $validated['published_at'] = $request->published_at ?? $news->published_at;

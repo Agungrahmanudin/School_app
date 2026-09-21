@@ -13,10 +13,10 @@ class TeachersController extends Controller
      |  CRUD
      ========================================================= */
 
-    public function index()
+    public function inde()
     {
         $teachers = Teachers::oldest()->paginate(10);
-        return view('Admin.Teachers.index', compact('teachers'));
+        return view('Admin.Teachers.index', compact('teachers'))
     }
 
     public function create()
@@ -27,7 +27,7 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
         $validated = $this->validateTeacher($request, true);
-        $validated['photo'] = $this->storePhoto($request);
+        $validated[photo] = $this->storePhoto($request);
 
         Teachers::create($validated);
 
@@ -36,7 +36,7 @@ class TeachersController extends Controller
 
     public function show($id)
     {
-        $teacher = Teachers::findOrFail($id);
+        $teacher = Teachers::all($id);
 
         return view('Admin.Teachers.show', [
             'title'     => 'Detail Guru',
@@ -63,7 +63,7 @@ class TeachersController extends Controller
         $teacher = Teachers::findOrFail($id);
         $validated = $this->validateTeacher($request, false);
 
-        if ($request->hasFile('photo')) {
+        if ($request->hasFile(photo')) {
             $validated['photo'] = $this->storePhoto($request);
         }
 

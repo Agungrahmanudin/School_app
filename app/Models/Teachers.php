@@ -9,7 +9,6 @@ class Teachers extends Model
     protected $fillable = [
         'nip',
         'name',
-        'gender',
         'subject',
         'position',
         'photo',
