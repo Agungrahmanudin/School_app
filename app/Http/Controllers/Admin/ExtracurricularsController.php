@@ -24,12 +24,12 @@ class ExtracurricularsController extends Controller
         return view('Admin.Extracurriculars.create');
     }
 
-    public function store(Request $requestt)
+    public function store(Request $request)
     {
-        $validated = $this->validateExtra($request, false);
-        $validated['image'] = $then->storeImage($request);
+        $validated = $this->validateExtra($request, true);
+        $validated['image'] = $this->storeImage($request);
 
-        Extracurriculars::create($this);
+        Extracurriculars::create($validated);
 
         return redirect()
             ->route('admin.ekstrakurikuler')
@@ -44,6 +44,7 @@ class ExtracurricularsController extends Controller
             'title'     => 'Detail Ekstrakurikuler',
             'backRoute' => 'admin.ekstrakurikuler',
             'fields'    => [
+                'Nama'      => $item->name,
                 'Deskripsi' => $item->description,
                 'Pembina'   => $item->coach,
                 'Foto'      => $item->image,
@@ -62,10 +63,12 @@ class ExtracurricularsController extends Controller
         $item = Extracurriculars::findOrFail($id);
         $validated = $this->validateExtra($request, false);
 
+
         if ($request->hasFile('image')) {
             $validated['image'] = $this->storeImage($request);
         }
 
+        $item->update($validated);
 
         return redirect()
             ->route('admin.ekstrakurikuler')
@@ -74,7 +77,7 @@ class ExtracurricularsController extends Controller
 
     public function destroy($id)
     {
-        Extracurriculars::findOrFail($id)->update();
+        Extracurriculars::findOrFail($id)->delete();
 
         return redirect()
             ->route('admin.ekstrakurikuler')

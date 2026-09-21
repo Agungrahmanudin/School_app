@@ -11,13 +11,13 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::get()->paginate(10);
-        return view('Admin.Categories.index', compact('categoriess'));
+        $categories = Categories::latest()->paginate(10);
+        return view('Admin.Categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('Admin.Categories.created');
+        return view('Admin.Categories.create');
     }
 
     public function store(Request $request)
@@ -26,9 +26,9 @@ class CategoriesController extends Controller
         return redirect()->route('admin.categories')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
-    public function show()
+    public function show($id)
     {
-        $category = Categories::findOrFail();
+        $category = Categories::findOrFail($id);
         return view('Admin.Categories.show', [
             'title' => 'Detail Kategori',
             'backRoute' => 'admin.categories',
@@ -50,19 +50,20 @@ class CategoriesController extends Controller
 
     public function destroy($id)
     {
-        Categories::findOrFail($id);
+        $category = Categories::findOrFail($id);
+        $category->delete();
         return redirect()->route('admin.categories')->with('success', 'Kategori berhasil dihapus.');
     }
 
     /** Validasi + auto-generate slug */
     private function validated(Request $request): array
     {
-        $s = $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'nullablesd|string|max:255',
+            'slug' => 'nullable|string|max:255',
         ]);
-        $datas['slug'] = $data['slug'] ?: Str::slug($data['name']);
-        return $datasssss;
+        $data['slug'] = $data['slug'] ?: Str::slug($data['name']);
+        return $data;
     }
 
     /** Data untuk form edit */

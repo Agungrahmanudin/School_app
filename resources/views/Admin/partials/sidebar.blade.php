@@ -47,8 +47,8 @@
             <!-- ================= PROFIL SEKOLAH ================= -->
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Profil Sekolah">
 
-                <a href="{{ route('admin.profil-sekolah') }}"
-                    class="nav-link {{ request()->routeIs('admin.profil-sekolah*') ? 'active-icon' : '' }}">
+                <a href="{{ route('admin.profil.sekolah') }}"
+                    class="nav-link {{ request()->routeIs('admin.profilsekolah*') ? 'active-icon' : '' }}">
                     <i class="bi bi-building"></i>
                 </a>
             </li>
@@ -187,8 +187,8 @@
 
 
                 <!-- PROFIL SEKOLAH -->
-                <a href="{{ route('admin.profil-sekolah') }}"
-                    class="list-group-item {{ request()->routeIs('admin.profil-sekolah*') ? 'active' : '' }}">
+                <a href="{{ route('admin.profil.sekolah') }}"
+                    class="list-group-item {{ request()->routeIs('admin.profil.sekolah*') ? 'active' : '' }}">
                     <i class="bi bi-building me-2"></i>
                     Profil Sekolah
                 </a>

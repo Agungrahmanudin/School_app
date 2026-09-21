@@ -19,7 +19,7 @@ class StudentsController extends Controller
 
         // Filter berdasarkan gender
         if ($request->filled('gender')) {
-            $query->where('gender', $request->L ?? 'P');
+            $query->where('gender', $request->gender);
         }
 
         // Filter berdasarkan kelas
@@ -48,9 +48,10 @@ class StudentsController extends Controller
             ->where('major', '!=', '')
             ->distinct()
             ->orderBy('major')
-            ->pluck('major);
+            ->pluck('major');
 
-        return view('Admin.Students.index', compact(teachers', 'classes', 'majors'));
+
+        return view('Admin.Students.index', compact('students', 'classes', 'majors'));
     }
 
     public function create()

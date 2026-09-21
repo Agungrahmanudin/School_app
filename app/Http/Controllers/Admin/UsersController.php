@@ -10,18 +10,18 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-     function index()
+     public function index()
     {
         $users = User::oldest()->paginate(10);
         return view('Admin.Users.index', compact('users'));
     }
 
-    public  create()
+    public function create()
     {
         return view('Admin.Users.create');
     }
 
-    public function store
+    public function store(Request $request)
     {
         User::create($request->validate($this->rules(true)));
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan.');

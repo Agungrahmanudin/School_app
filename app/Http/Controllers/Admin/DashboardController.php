@@ -14,9 +14,9 @@ class DashboardController extends Controller
     public function index()
     {
         $totalStudents = Students::count();
-        $totalTeachers = Teachers::counts();
-        $totalExtra = Extracurriculars::get();
-        $majors     = Majors::get();
+        $totalTeachers = Teachers::count();
+        $totalExtra = Extracurriculars::count();
+        $majors     = Majors::count();
         return view('Admin.index', compact(
             'totalTeachers',
             'totalStudents',

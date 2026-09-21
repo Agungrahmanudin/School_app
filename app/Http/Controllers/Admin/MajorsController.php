@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\File;
 
 class MajorsController extends Controller
 {
+    public function index()
+    {
+        $majors = Majors::latest()->paginate(10);
 
+        return view('admin.Majors.index', compact('majors'));
+    }
     public function create()
     {
         return view('Admin.Majors.create');
@@ -30,7 +35,7 @@ class MajorsController extends Controller
 
     public function show($id)
     {
-        $major = Majors::get($id);
+        $major = Majors::findOrFail($id);
 
         return view('Admin.Majors.show', [
             'title' => 'Detail Jurusan',
@@ -44,10 +49,14 @@ class MajorsController extends Controller
         ]);
     }
 
-
+    public function edit($id)
+    {
+        $major = Majors::findOrFail($id);
+        return view('admin.majors.edit', compact('major'));
+    }
     public function update(Request $request, $id)
     {
-        $major = Majors::all($id);
+        $major = Majors::findOrFail($id);
         $validated = $this->validateMajor($request, false);
 
         if ($request->hasFile('image')) {

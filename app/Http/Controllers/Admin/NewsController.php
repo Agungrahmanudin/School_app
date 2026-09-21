@@ -43,7 +43,7 @@ class NewsController extends Controller
 
     public function show($id)
     {
-        $news = Wews::with('category', 'createdBy')->findOrFail($id);
+        $news = News::with('category', 'createdBy')->findOrFail($id);
 
         return view('Admin.News.show', [
             'title' => 'Detail Berita',

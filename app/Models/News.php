@@ -19,6 +19,6 @@ class News extends Model
 
     public function createdBy()
     {
-        return $this->belongs(Users::class, 'createdBy');
+        return $this->belongs(User::class, 'createdBy');
     }
 }

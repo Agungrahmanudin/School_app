@@ -6,9 +6,9 @@ use App\Models\Extracurriculars;
 use App\Models\Galleries;
 use App\Models\news;
 use App\Models\Majors;
-use App\Models\SchoolProfiles;
-use App\Models\Studentss;
-use App\Modelss\Teachers;
+use App\Models\School_profiles;
+use App\Models\Students;
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->orWhere('position', 'LIKE', '%Kepsek%')
             ->first();
 
-        return views('landing.index', compac(
+        return view('landing.index', compact(
             'profile',
             'totalTeachers',
             'totalStudents',
@@ -41,9 +41,9 @@ class HomeController extends Controller
             'totalGalleries',
             'news',
             'galleries',
-            'extracurricularas',
+            'extracurriculars',
             'teachers',
-            'majorsa',
+            'majors',
             'principal',
         ));
     }

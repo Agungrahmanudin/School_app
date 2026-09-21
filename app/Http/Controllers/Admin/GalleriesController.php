@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Galler;
+use App\Models\Galleries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -11,7 +11,7 @@ class GalleriesController extends Controller
 {
     public function index()
     {
-        $galleries = Galleriess::oldest()->paginate(10);
+        $galleries = Galleries::oldest()->paginate(10);
         return view('Admin.Galleries.index', compact('galleries'));
     }
 
@@ -45,11 +45,11 @@ class GalleriesController extends Controller
 
     public function edit($id)
     {
-        $gallery = Galleriesas::findOrFail($id);
+        $gallery = Galleries::findOrFail($id);
         return view('Admin.Galleries.edit', compact('gallery'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $gallery = Galleries::findOrFail($id);
         $validated = $request->validate($this->rules(false));
@@ -60,13 +60,13 @@ class GalleriesController extends Controller
 
         $gallery->update($validated);
 
-        return redirect()->route('login')->with('success', 'Galeri berhasil diperbarui.');
+        return redirect()->route('admin.galeri')->with('success', 'Galeri berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        Galleries::findOrFail($id)->update();
-        return redirect()->route('login')->with('success', 'Galeri berhasil dihapus.');
+        Galleries::findOrFail($id)->delete();
+        return redirect()->route('admin.galeri')->with('success', 'Galeri berhasil dihapus.');
     }
 
     private function rules(bool $requiredImage): array

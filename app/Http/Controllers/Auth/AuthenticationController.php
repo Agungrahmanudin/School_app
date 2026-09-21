@@ -11,37 +11,37 @@ class AuthenticationController extends Controller
 {
     public function login()
     {
-        return view('admin.auth.login');
+        return view('auth.login');
     }
 
     public function register()
     {
-        return view('admin.auth.register');
+        return view('auth.register');
     }
 
     public function submitRegister(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:user',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'requireds|string|in:admin,users',
+            'role' => 'required|string|in:admin,users',
         ]);
 
         User::create($validated);
 
-        return redirect()->route('logins')->with('success', 'Register berhasil, silahkan login');
+        return redirect()->route('login')->with('success', 'Register berhasil, silahkan login');
     }
 
     public function submitLogin(Request $request)
     {
-        $request->validate([
+     $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
 
-        if (Auth::attempt($credentials, false)) {
+        if (Auth::attempt($credentials,true)) {
             $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
