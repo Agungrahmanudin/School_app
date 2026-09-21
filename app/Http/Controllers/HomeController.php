@@ -15,12 +15,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $profile = School_profiles::get();
-        $totalTeachers = Teachers::get();
-        $totalStudents = Students::get();
-        $totalExtra = Extracurriculars::all();
-        $totalGalleries = Galleries::all();
-        $majors = Majors::all();
+        $profile = School_profiles::count();
+        $totalTeachers = Teachers::count();
+        $totalStudents = Students::count();
+        $totalExtra = Extracurriculars::count();
+        $totalGalleries = Galleries::count();
+        $majors = Majors::get();
 
         $news = News::with('category')->latest()->take(3)->get();
         $galleries = Galleries::latest()->take(3)->get();
