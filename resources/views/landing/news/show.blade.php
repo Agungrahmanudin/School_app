@@ -70,13 +70,6 @@
               </div>
             @endforeach
           </div>
-
-          <div class="service-item first-service" style="padding: 30px; border-radius: 20px;">
-            <h4>{{ $profile->school_name ?? 'SMK Negeri 1' }}</h4>
-            <p>{{ Str::limit($profile->history, 120) }}</p>
-            <div class="text-button">
-              <a href="{{ route('landing.profile') }}">Buka Profil Sekolah <i class="fa fa-arrow-right"></i></a>
-            </div>
           </div>
         </div>
       </div>

@@ -72,11 +72,11 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="d-inline-flex gap-2">
-                                        <a href="{{ route('admin.berita.edit', $item->id) }}" class="btn btn-sm btn-outline-warning" title="Edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
                                         <a href="{{ route('admin.berita.show', $item->id) }}" class="btn btn-sm btn-outline-info" title="Lihat">
                                             <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{ route('admin.berita.edit', $item->id) }}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                            <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('admin.berita.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
                                             @csrf
