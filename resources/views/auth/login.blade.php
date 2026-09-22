@@ -35,20 +35,26 @@
                                             <div class="ms-auto position-relative">
                                                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i
                                                         class="bi bi-envelope-fill"></i></div>
-                                                <input type="email" class="form-control radius-30 ps-5"
-                                                    id="inputEmailAddress" name="email" placeholder="Email Address"
+                                                <input type="email" class="form-control radius-30 ps-5 @error('email') is-invalid @enderror"
+                                                    id="inputEmailAddress" name="email" value="{{ old('email') }}" placeholder="Email Address"
                                                     required>
                                             </div>
+                                            @error('email')
+                                                <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">Enter Password</label>
                                             <div class="ms-auto position-relative">
                                                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i
                                                         class="bi bi-lock-fill"></i></div>
-                                                <input type="password" class="form-control radius-30 ps-5"
+                                                <input type="password" class="form-control radius-30 ps-5 @error('password') is-invalid @enderror"
                                                     id="inputChoosePassword" name="password" placeholder="Enter Password"
                                                     required>
                                             </div>
+                                            @error('password')
+                                                <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="col-12 text-end"> <a href="authentication-forgot-password.html">Forgot
                                                 Password ?</a>

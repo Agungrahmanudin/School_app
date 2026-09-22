@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
@@ -35,25 +36,41 @@ class AuthenticationController extends Controller
 
     public function submitLogin(Request $request)
     {
-     $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+        ], [
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'password.required' => 'Password wajib diisi.',
         ]);
 
+        $user = User::where('email', $request->email)->first();
 
-        if (Auth::attempt($credentials,true)) {
-            $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'Email yang Anda masukkan salah.',
+            ])->withInput($request->only('email'));
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password yang Anda masukkan salah.',
-        ])->withInput($request->only('email'));
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors([
+                'password' => 'Password yang Anda masukkan salah.',
+            ])->withInput($request->only('email'));
+        }
+
+        Auth::login($user, true);
+        $request->session()->regenerate();
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function logout(Request $request)
     {
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

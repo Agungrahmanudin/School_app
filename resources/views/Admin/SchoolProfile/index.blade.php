@@ -120,12 +120,6 @@
                             <i class="bi bi-journal-text me-2"></i>Visi Misi
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="footer-tab" data-bs-toggle="tab" data-bs-target="#footer"
-                            type="button" role="tab">
-                            <i class="bi bi-layout-text-window-reverse me-2"></i>Footer
-                        </button>
-                    </li>
                 </ul>
 
                 <form action="{{ route('admin.profil.sekolah.update') }}" method="POST" enctype="multipart/form-data"
@@ -164,6 +158,29 @@
                                         <input type="text" name="principal_name" class="form-control"
                                             value="{{ old('principal_name', $profile->principal_name ?? '') }}" required
                                             placeholder="Nama lengkap dan gelar">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Telepon Sekolah <span class="text-danger">*</span></label>
+                                        <input type="text" name="phone" class="form-control"
+                                            value="{{ old('phone', $profile->phone ?? '') }}" required
+                                            placeholder="(021) 1234567">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email Sekolah <span class="text-danger">*</span></label>
+                                        <input type="email" name="email" class="form-control"
+                                            value="{{ old('email', $profile->email ?? '') }}" required
+                                            placeholder="info@sekolah.sch.id">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Website Resmi</label>
+                                        <input type="url" name="website" class="form-control"
+                                            value="{{ old('website', $profile->website ?? '') }}"
+                                            placeholder="https://sekolah.sch.id">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                                        <textarea name="address" rows="3" class="form-control" required
+                                            placeholder="Alamat lengkap sekolah">{{ old('address', $profile->address ?? '') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -306,205 +323,6 @@
                             </div>
                         </div>
 
-                        <!-- TAB 4: FOOTER -->
-                        <div class="tab-pane fade" id="footer" role="tabpanel">
-
-                            <div class="form-section-card">
-                                <h6 class="form-section-title"><i class="bi bi-person-lines-fill"></i> Kontak Footer</h6>
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Alamat Footer <span class="text-danger">*</span></label>
-                                        <textarea name="address" rows="2" class="form-control" required placeholder="Alamat lengkap sekolah">{{ old('address', $profile->address ?? '') }}</textarea>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Telepon Footer <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" name="phone" class="form-control"
-                                            value="{{ old('phone', $profile->phone ?? '') }}" required
-                                            placeholder="(021) 1234567">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Email Footer <span class="text-danger">*</span></label>
-                                        <input type="email" name="email" class="form-control"
-                                            value="{{ old('email', $profile->email ?? '') }}" required
-                                            placeholder="info@sekolah.sch.id">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Website Footer</label>
-                                        <input type="url" name="website" class="form-control"
-                                            value="{{ old('website', $profile->website ?? '') }}"
-                                            placeholder="https://sekolah.sch.id">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-section-card">
-                                <h6 class="form-section-title"><i class="bi bi-share-fill"></i> Sosial Media &amp;
-                                    Copyright</h6>
-                                <div class="row g-4">
-                                    <div class="col-md-4">
-                                        <label class="form-label">Link Facebook</label>
-                                        <input type="url" name="facebook_url" class="form-control"
-                                            value="{{ old('facebook_url', $profile->facebook_url ?? '') }}"
-                                            placeholder="https://facebook.com/...">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Link Instagram</label>
-                                        <input type="url" name="instagram_url" class="form-control"
-                                            value="{{ old('instagram_url', $profile->instagram_url ?? '') }}"
-                                            placeholder="https://instagram.com/...">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Link YouTube</label>
-                                        <input type="url" name="youtube_url" class="form-control"
-                                            value="{{ old('youtube_url', $profile->youtube_url ?? '') }}"
-                                            placeholder="https://youtube.com/...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Teks Copyright Footer</label>
-                                        <input type="text" name="footer_copyright" class="form-control"
-                                            value="{{ old('footer_copyright', $profile->footer_copyright ?? '') }}"
-                                            placeholder="© 2026 SMK Negeri 1 Indonesia Berprestasi.">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Deskripsi Singkat Footer</label>
-                                        <textarea name="footer_description" rows="2" class="form-control" maxlength="500"
-                                            placeholder="Kalimat singkat tentang sekolah...">{{ old('footer_description', $profile->footer_description ?? '') }}</textarea>
-                                        <small class="text-muted">Maksimal 500 karakter.</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-section-card">
-                                <h6 class="form-section-title"><i class="bi bi-list-nested"></i> Menu &amp; Judul Footer
-                                </h6>
-                                <div class="row g-4">
-                                    <div class="col-md-4">
-                                        <label class="form-label">Judul Navigasi</label>
-                                        <input type="text" name="footer_nav_title" class="form-control mb-3"
-                                            value="{{ old('footer_nav_title', $profile->footer_nav_title ?? '') }}"
-                                            placeholder="Navigasi">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Judul Informasi</label>
-                                        <input type="text" name="footer_info_title" class="form-control mb-3"
-                                            value="{{ old('footer_info_title', $profile->footer_info_title ?? '') }}"
-                                            placeholder="Informasi">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Judul Kontak</label>
-                                        <input type="text" name="footer_contact_title" class="form-control mb-3"
-                                            value="{{ old('footer_contact_title', $profile->footer_contact_title ?? '') }}"
-                                            placeholder="Kontak Kami">
-                                    </div>
-
-                                    <div class="col-12">
-                                        <hr class="my-3">
-                                        <h6 class="text-muted mb-3"><i class="bi bi-tag-fill me-2"></i>Label Kontak Footer
-                                            (Opsional)</h6>
-                                        <div class="row g-3">
-                                            <div class="col-md-3">
-                                                <label class="form-label small">Label Alamat</label>
-                                                <input type="text" name="footer_contact_label_address"
-                                                    class="form-control"
-                                                    value="{{ old('footer_contact_label_address', $profile->footer_contact_label_address ?? '') }}"
-                                                    placeholder="Alamat">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label class="form-label small">Label Telepon</label>
-                                                <input type="text" name="footer_contact_label_phone"
-                                                    class="form-control"
-                                                    value="{{ old('footer_contact_label_phone', $profile->footer_contact_label_phone ?? '') }}"
-                                                    placeholder="Telepon">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label class="form-label small">Label Email</label>
-                                                <input type="text" name="footer_contact_label_email"
-                                                    class="form-control"
-                                                    value="{{ old('footer_contact_label_email', $profile->footer_contact_label_email ?? '') }}"
-                                                    placeholder="Email">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label class="form-label small">Label Website</label>
-                                                <input type="text" name="footer_contact_label_website"
-                                                    class="form-control"
-                                                    value="{{ old('footer_contact_label_website', $profile->footer_contact_label_website ?? '') }}"
-                                                    placeholder="Website">
-                                            </div>
-                                        </div>
-                                        <small class="text-muted d-block mt-2">Kosongkan jika tidak ingin menampilkan
-                                            label. Data kontak akan ditampilkan dengan icon.</small>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">Daftar Menu Navigasi</label>
-                                        <input type="text" name="footer_nav_home" class="form-control mb-2"
-                                            value="{{ old('footer_nav_home', $profile->footer_nav_home ?? '') }}"
-                                            placeholder="Beranda">
-                                        <input type="text" name="footer_nav_profile" class="form-control mb-2"
-                                            value="{{ old('footer_nav_profile', $profile->footer_nav_profile ?? '') }}"
-                                            placeholder="Profil Sekolah">
-                                        <input type="text" name="footer_nav_extracurricular" class="form-control mb-2"
-                                            value="{{ old('footer_nav_extracurricular', $profile->footer_nav_extracurricular ?? '') }}"
-                                            placeholder="Ekstrakurikuler">
-                                        <input type="text" name="footer_nav_gallery" class="form-control mb-2"
-                                            value="{{ old('footer_nav_gallery', $profile->footer_nav_gallery ?? '') }}"
-                                            placeholder="Galeri">
-                                        <input type="text" name="footer_nav_news" class="form-control"
-                                            value="{{ old('footer_nav_news', $profile->footer_nav_news ?? '') }}"
-                                            placeholder="Berita Kegiatan">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Daftar Menu Informasi</label>
-                                        <input type="text" name="footer_info_vision" class="form-control mb-2"
-                                            value="{{ old('footer_info_vision', $profile->footer_info_vision ?? '') }}"
-                                            placeholder="Visi & Misi">
-                                        <input type="text" name="footer_info_teachers" class="form-control mb-2"
-                                            value="{{ old('footer_info_teachers', $profile->footer_info_teachers ?? '') }}"
-                                            placeholder="Data Tenaga Pendidik">
-                                        <input type="text" name="footer_info_students" class="form-control mb-2"
-                                            value="{{ old('footer_info_students', $profile->footer_info_students ?? '') }}"
-                                            placeholder="Statistik Siswa">
-                                        <input type="text" name="footer_info_news" class="form-control"
-                                            value="{{ old('footer_info_news', $profile->footer_info_news ?? '') }}"
-                                            placeholder="Agenda & Pengumuman">
-                                    </div>
-                                    <div class="col-12">
-                                        <hr class="my-3">
-                                        <h6 class="text-muted mb-3"><i class="bi bi-telephone-fill me-2"></i>Daftar Menu
-                                            Kontak (Opsional)</h6>
-                                        <p class="text-muted small mb-3">Isi menu kontak ini jika ingin menampilkan daftar
-                                            link di section Kontak. Kosongkan jika tidak perlu.</p>
-                                        <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <input type="text" name="footer_contact_menu_1" class="form-control"
-                                                    value="{{ old('footer_contact_menu_1', $profile->footer_contact_menu_1 ?? '') }}"
-                                                    placeholder="Contoh: Peta Lokasi">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" name="footer_contact_menu_2" class="form-control"
-                                                    value="{{ old('footer_contact_menu_2', $profile->footer_contact_menu_2 ?? '') }}"
-                                                    placeholder="Contoh: Hubungi Kami">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" name="footer_contact_menu_3" class="form-control"
-                                                    value="{{ old('footer_contact_menu_3', $profile->footer_contact_menu_3 ?? '') }}"
-                                                    placeholder="Contoh: PPDB Online">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" name="footer_contact_menu_4" class="form-control"
-                                                    value="{{ old('footer_contact_menu_4', $profile->footer_contact_menu_4 ?? '') }}"
-                                                    placeholder="Contoh: Aduan & Saran">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" name="footer_contact_menu_5" class="form-control"
-                                                    value="{{ old('footer_contact_menu_5', $profile->footer_contact_menu_5 ?? '') }}"
-                                                    placeholder="Menu tambahan 5">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>

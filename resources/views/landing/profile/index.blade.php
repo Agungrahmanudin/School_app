@@ -152,30 +152,10 @@
           </div>
         @endforeach
       </div>
+      <div class="d-flex justify-content-center mt-4">
+        {{ $teachers->links() }}
+      </div>
     </div>
   </div>
 
 @endsection
-
-<style>
-.profile-image-wrap {
-  width: 100%;
-  height: 420px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-}
-.profile-image-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-@media (max-width: 991px) {
-  .profile-image-wrap { height: 340px; margin-top: 20px; }
-}
-@media (max-width: 576px) {
-  .profile-image-wrap { height: 260px; }
-}
-</style>

@@ -44,7 +44,7 @@ Route::middleware(['auth'])->prefix('/admin/panel')->group(function () {
     Route::get('users/{id}', [UsersController::class, 'show'])->name('admin.users.show');
     Route::get('users/{id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
     Route::put('users/{id}', [UsersController::class, 'update'])->name('admin.users.update');
-    Route::delete('users/{id}', [UsersController::class, 'destroya'])->name('admin.users.destroy');
+    Route::delete('users/{id}', [UsersController::class, 'destroy'])->name('admin.users.destroy');
 
     // Categories
     Route::get('categories', [CategoriesController::class, 'index'])->name('admin.categories');

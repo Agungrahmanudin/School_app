@@ -1,4 +1,4 @@
-﻿@extends('landing.layout.app')
+@extends('landing.layout.app')
 
 @section('title', 'Ekstrakurikuler - ' . ($profile->school_name ?? 'SMK'))
 
@@ -70,6 +70,9 @@
             <p>Belum ada data ekstrakurikuler.</p>
           </div>
         @endforelse
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        {{ $extracurriculars->links() }}
       </div>
     </div>
   </div>

@@ -245,9 +245,6 @@
                   "{{ $profile->vision ?? 'Terwujudnya Peserta Didik yang Religius, Vokasional, Entrepreneurship dan Profesional.' }}"
                 </em>
               </div>
-              <p class="text-muted mb-0 vision-description-text">
-                Mencerminkan tekad bersama dalam membangun ekosistem pendidikan kejuruan yang berdaya saing global dan berlandaskan budi pekerti luhur.
-              </p>
             </div>
           </div>
         </div>

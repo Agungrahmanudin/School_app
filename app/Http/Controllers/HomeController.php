@@ -52,7 +52,7 @@ class HomeController extends Controller
         $totalTeachers = Teachers::count();
         $totalStudents = Students::count();
         $totalExtra = Extracurriculars::count();
-        $teachers = Teachers::latest()->get();
+        $teachers = Teachers::latest()->paginate(6);
 
         $principal = Teachers::where('position', 'LIKE', '%Kepala Sekolah%')
             ->orWhere('position', 'LIKE', '%Kepsek%')
@@ -70,7 +70,7 @@ class HomeController extends Controller
 
     public function extracurriculars()
     {
-        $extracurriculars = Extracurriculars::latest()->get();
+        $extracurriculars = Extracurriculars::latest()->paginate(6);
 
         return view(
             'landing.extracurriculars.index',
@@ -94,7 +94,7 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        $galleries = Galleries::latest()->get();
+        $galleries = Galleries::latest()->paginate(6);
 
         return view(
             'landing.gallery.index',
@@ -145,7 +145,7 @@ class HomeController extends Controller
 
     public function majors()
     {
-        $majors = Majors::latest()->get();
+        $majors = Majors::latest()->paginate(6);
 
         return view(
             'landing.majors.index',

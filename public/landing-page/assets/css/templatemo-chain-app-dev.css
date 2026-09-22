@@ -390,6 +390,8 @@ header
   padding-right: 20px;
 }
 
+/* Old template styles for 6th item (now Galeri) disabled to prevent white text bug */
+/*
 .header-area .main-nav .nav li:nth-child(6) {
   padding-right: 0px;
   padding-left: 40px;
@@ -409,6 +411,7 @@ header
 .background-header .main-nav .nav li:nth-child(6) a:hover {
   color: #fff !important;
 }
+*/
 
 .header-area .main-nav .nav li a {
   display: block;
@@ -431,9 +434,11 @@ header
   color: #4b8ef1!important;
 }
 
+/*
 .header-area .main-nav .nav li:last-child a.active {
   color: #fff !important;
 }
+*/
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
@@ -519,17 +524,19 @@ header
   cursor: pointer;
   display: block;
   position: absolute;
-  top: 33px;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   width: 32px;
-  height: 40px;
+  height: 32px;
   text-indent: -9999em;
-  z-index: 99;
-  right: 40px;
+  z-index: 10000;
+  right: 0 !important;
   display: none;
 }
 
 .background-header .main-nav .menu-trigger {
-  top: 23px;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
 .header-area .main-nav .menu-trigger span,
@@ -776,11 +783,14 @@ header
   }
 }
 
+/* Commented out min-width: 767px display:flex !important which broke mobile menu between 768px-991px */
+/*
 @media (min-width: 767px) {
   .header-area .main-nav .nav {
     display: flex !important;
   }
 }
+*/
 
 /* 
 ---------------------------------------------
@@ -2284,6 +2294,8 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* Legacy nav overrides commented out in favor of centralized custom.css */
+/*
 .header-area .main-nav .nav {
   margin-top: 0 !important;
   margin-left: 50px !important;
@@ -2328,7 +2340,6 @@ body {
   display: none !important;
 }
 
-/* Item CTA (Dashboard/Sign In) didorong ke ujung kanan */
 .header-area .main-nav .nav li.nav-cta {
   margin-left: auto !important;
   padding-left: 20px !important;
@@ -2350,6 +2361,7 @@ body {
   opacity: 0.9;
   border-bottom: none !important;
 }
+*/
 
 @media (max-width: 991px) {
   .header-area .main-nav .nav {
@@ -2769,6 +2781,7 @@ footer .footer-widget h4 {
   position: relative !important;
   padding-bottom: 10px !important;
 }
+/*
 footer .footer-widget h4:after {
   content: '';
   position: absolute;
@@ -2778,6 +2791,7 @@ footer .footer-widget h4:after {
   height: 2px;
   background-color: #0d6efd;
 }
+*/
 footer .footer-widget ul {
   display: block !important;
   float: none !important;

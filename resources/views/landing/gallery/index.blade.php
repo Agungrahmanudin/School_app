@@ -1,4 +1,4 @@
-﻿@extends('landing.layout.app')
+@extends('landing.layout.app')
 
 @section('title', 'Galeri - ' . ($profile->school_name ?? 'SMK'))
 
@@ -62,6 +62,9 @@
                     <p>Belum ada dokumentasi foto galeri.</p>
                 </div>
             @endforelse
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            {{ $galleries->links() }}
         </div>
     </div>
 </div>

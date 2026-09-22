@@ -89,9 +89,36 @@ $(function() {
 
 	// Menu Dropdown Toggle
   if($('.menu-trigger').length){
-    $(".menu-trigger").on('click', function() { 
+    $(".menu-trigger").off('click').on('click', function(e) { 
+      e.preventDefault();
       $(this).toggleClass('active');
-      $('.header-area .nav').slideToggle(200);
+      $('.header-area .main-nav .nav').toggleClass('open');
+    });
+
+    // Close mobile menu when clicking outside
+    $(document).on('click', function(e) {
+      if ($(window).width() < 992) {
+        if (!$(e.target).closest('.header-area .main-nav').length) {
+          $('.menu-trigger').removeClass('active');
+          $('.header-area .main-nav .nav').removeClass('open');
+        }
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    $('.header-area .main-nav .nav li a').on('click', function() {
+      if ($(window).width() < 992) {
+        $('.menu-trigger').removeClass('active');
+        $('.header-area .main-nav .nav').removeClass('open');
+      }
+    });
+
+    // Reset menu on resize to desktop
+    $(window).on('resize', function() {
+      if ($(window).width() >= 992) {
+        $('.header-area .main-nav .nav').removeAttr('style').removeClass('open');
+        $('.menu-trigger').removeClass('active');
+      }
     });
   }
 
