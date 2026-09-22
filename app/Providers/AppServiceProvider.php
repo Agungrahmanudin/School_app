@@ -24,12 +24,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
 
-        View::composer('landing.*', function ($view) {
-            $view->with('profile', School_profiles::first());
-        });
-
-        View::composer('Admin.*', function ($view) {
-            $view->with('profile', School_profiles::first());
+        View::composer('*', function ($view) {
+            static $profile = null;
+            if ($profile === null) {
+                $profile = School_profiles::first();
+            }
+            $view->with('profile', $profile);
         });
     }
 }

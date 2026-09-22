@@ -56,9 +56,6 @@
                                                 <span class="text-danger small mt-1 d-block">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="col-12 text-end"> <a href="authentication-forgot-password.html">Forgot
-                                                Password ?</a>
-                                        </div>
                                         <div class="col-12">
                                             <div class="d-grid">
                                                 <button type="submit" class="btn btn-primary radius-30">Sign In</button>

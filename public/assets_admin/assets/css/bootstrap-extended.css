@@ -175,6 +175,10 @@
 	background-image: linear-gradient(-20deg, rgb(43, 88, 118) 0%, rgb(78, 67, 118) 100%);
 }
 
+.bg-gradient-primary {
+	background-image: linear-gradient(310deg, #3461ff, #6142ff);
+}
+
 /* Text Colors */
 
 .text-primary {

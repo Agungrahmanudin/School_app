@@ -40,7 +40,7 @@
               <div class="news-body">
                 <div class="news-date">
                   <i class="fa fa-calendar-alt text-primary"></i>
-                  <span>{{ $item->created_at ? $item->created_at->format('d M Y') : 'Terbaru' }}</span>
+                  <span>{{ $item->published_at ? \Carbon\Carbon::parse($item->published_at)->translatedFormat('d M Y') : ($item->created_at ? $item->created_at->translatedFormat('d M Y') : 'Terbaru') }}</span>
                 </div>
                 <h5 class="news-title">
                   <a href="{{ route('landing.news.detail', $item->slug) }}">

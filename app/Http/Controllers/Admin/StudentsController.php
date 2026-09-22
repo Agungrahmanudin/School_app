@@ -13,45 +13,11 @@ class StudentsController extends Controller
      |  CRUD
      ========================================================= */
 
-    public function index(Request $request)
+    public function index()
     {
-        $query = Students::query();
+        $students = Students::oldest()->paginate(10);
 
-        // Filter berdasarkan gender
-        if ($request->filled('gender')) {
-            $query->where('gender', $request->gender);
-        }
-
-        // Filter berdasarkan kelas
-        if ($request->filled('class')) {
-            $query->where('class', $request->class);
-        }
-
-        // Filter berdasarkan jurusan
-        if ($request->filled('major')) {
-            $query->where('major', $request->major);
-        }
-
-        $students = $query->oldest()->paginate(10)->withQueryString();
-
-        // Ambil daftar kelas unik dari database untuk dropdown
-        $classes = Students::query()
-            ->whereNotNull('class')
-            ->where('class', '!=', '')
-            ->distinct()
-            ->orderBy('class')
-            ->pluck('class');
-
-        // Ambil daftar jurusan unik dari database untuk dropdown
-        $majors = Students::query()
-            ->whereNotNull('major')
-            ->where('major', '!=', '')
-            ->distinct()
-            ->orderBy('major')
-            ->pluck('major');
-
-
-        return view('Admin.Students.index', compact('students', 'classes', 'majors'));
+        return view('Admin.Students.index', compact('students'));
     }
 
     public function create()
@@ -147,27 +113,5 @@ class StudentsController extends Controller
         $file->move(public_path('uploads/students'), $name);
 
         return 'uploads/students/' . $name;
-    }
-
-    /**
-     * Data untuk form create/edit.
-     */
-    private function formData(
-        string $title,
-        string $saveRoute,
-        string $backRoute,
-        $record,
-        bool $edit = false
-    ): array {
-        return compact('title', 'saveRoute', 'backRoute', 'record', 'edit') + [
-            'fields' => [
-                ['name' => 'nis',    'label' => 'NIS',           'type' => 'text',   'required' => true],
-                ['name' => 'name',   'label' => 'Nama',          'type' => 'text',   'required' => true],
-                ['name' => 'gender', 'label' => 'Jenis Kelamin', 'type' => 'select', 'options' => ['L' => 'Laki-laki', 'P' => 'Perempuan']],
-                ['name' => 'class',  'label' => 'Kelas',         'type' => 'text',   'required' => true],
-                ['name' => 'major',  'label' => 'Jurusan',       'type' => 'text',   'required' => true],
-                ['name' => 'photo',  'label' => 'Foto',          'type' => 'file',   'required' => !$edit],
-            ],
-        ];
     }
 }

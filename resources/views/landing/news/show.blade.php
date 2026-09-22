@@ -26,7 +26,7 @@
             </span>
             <h3 class="mb-3" style="font-weight: 700; color: #2a2a2a;">{{ $article->title }}</h3>
             <p class="text-muted small mb-4">
-              <i class="fa fa-calendar me-1"></i> {{ $article->created_at ? $article->created_at->format('d F Y') : '-' }} &bull; 
+              <i class="fa fa-calendar me-1"></i> {{ $article->published_at ? \Carbon\Carbon::parse($article->published_at)->translatedFormat('d F Y') : ($article->created_at ? $article->created_at->translatedFormat('d F Y') : '-') }} &bull; 
               <i class="fa fa-user me-1"></i> {{ $article->createdBy->name ?? 'Admin Sekolah' }}
             </p>
 

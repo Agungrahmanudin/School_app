@@ -2,7 +2,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('assets_admin/assets/images/favicon-32x32.png') }}" type="image/png" />
+    @php
+      $appLogo = asset('assets_admin/assets/images/favicon-32x32.png');
+      if(!empty($profile->logo)) {
+        if(str_starts_with($profile->logo, 'storage/') || str_starts_with($profile->logo, 'uploads/')) {
+          $appLogo = asset($profile->logo);
+        } elseif(file_exists(public_path($profile->logo))) {
+          $appLogo = asset($profile->logo);
+        }
+      }
+    @endphp
+    <link rel="icon" href="{{ $appLogo }}?v={{ time() }}" type="image/png" />
+    <link rel="shortcut icon" href="{{ $appLogo }}?v={{ time() }}" />
+    <link rel="apple-touch-icon" href="{{ $appLogo }}?v={{ time() }}" />
     
     <!-- Plugins -->
     <link href="{{ asset('assets_admin/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />

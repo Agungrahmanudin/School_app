@@ -89,15 +89,4 @@ class GalleriesController extends Controller
 
         return 'uploads/galleries/' . $name;
     }
-
-    private function formData(string $title, string $saveRoute, string $backRoute, $record, bool $edit = false): array
-    {
-        return compact('title', 'saveRoute', 'backRoute', 'record', 'edit') + [
-            'fields' => [
-                ['name' => 'title', 'label' => 'Judul Galeri', 'type' => 'text'],
-                ['name' => 'description', 'label' => 'Deskripsi', 'type' => 'textarea'],
-                ['name' => 'image', 'label' => 'Foto', 'type' => 'file', 'required' => !$edit],
-            ],
-        ];
-    }
 }

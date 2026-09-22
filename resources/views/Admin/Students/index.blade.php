@@ -25,60 +25,6 @@
             </div>
         @endif
 
-
-        <div class="card mb-3">
-            <div class="card-body py-3">
-                <form action="{{ route('admin.siswa') }}" method="GET">
-                    <div class="row g-2 align-items-end">
-
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <label class="form-label mb-1 small fw-semibold text-muted">Jenis Kelamin</label>
-                            <select name="gender" class="form-select form-select-sm">
-                                <option value="">Semua</option>
-                                <option value="L" {{ request('gender') === 'L' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="P" {{ request('gender') === 'P' ? 'selected' : '' }}>Perempuan</option>
-                            </select>
-                        </div>
-
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <label class="form-label mb-1 small fw-semibold text-muted">Kelas</label>
-                            <select name="class" class="form-select form-select-sm">
-                                <option value="">Semua Kelas</option>
-                                @foreach ($classes as $c)
-                                    <option value="{{ $c }}" {{ request('class') == $c ? 'selected' : '' }}>
-                                        {{ $c }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-6 col-md-3 col-lg-3">
-                            <label class="form-label mb-1 small fw-semibold text-muted">Jurusan</label>
-                            <select name="major" class="form-select form-select-sm">
-                                <option value="">Semua Jurusan</option>
-                                @foreach ($majors as $m)
-                                    <option value="{{ $m }}" {{ request('major') == $m ? 'selected' : '' }}>
-                                        {{ $m }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-12 col-md-auto">
-                            <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-primary btn-sm px-3">
-                                    <i class="bi bi-funnel me-1"></i>Filter
-                                </button>
-                                <a href="{{ route('admin.siswa') }}" class="btn btn-outline-secondary btn-sm px-2"
-                                    title="Reset">
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="card">
             <div class="card-header py-3">
                 <h6 class="mb-0 fw-bold">Data Siswa</h6>
@@ -167,8 +113,7 @@
                         Menampilkan {{ $students->firstItem() ?? 0 }}–{{ $students->lastItem() ?? 0 }} dari
                         {{ $students->total() }} data
                     </small>
-                    {{-- withQueryString() agar filter tetap ada saat pindah halaman --}}
-                    {{ $students->withQueryString()->links('vendor.pagination.custom') }}
+                    {{ $students->links('vendor.pagination.custom') }}
                 </div>
             </div>
         </div>

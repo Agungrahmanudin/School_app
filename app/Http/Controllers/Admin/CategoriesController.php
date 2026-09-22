@@ -65,20 +65,4 @@ class CategoriesController extends Controller
         $data['slug'] = $data['slug'] ?: Str::slug($data['name']);
         return $data;
     }
-
-    /** Data untuk form edit */
-    private function formData($record): array
-    {
-        return [
-            'title' => 'Edit Kategori',
-            'saveRoute' => 'admin.categories.update',
-            'backRoute' => 'admin.categories',
-            'record' => $record,
-            'edit' => true,
-            'fields' => [
-                ['name' => 'name', 'label' => 'Nama Kategori', 'type' => 'text', 'required' => true],
-                ['name' => 'slug', 'label' => 'Slug', 'type' => 'text'],
-            ],
-        ];
-    }
 }

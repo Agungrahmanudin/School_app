@@ -26,7 +26,7 @@ class AuthenticationController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'required|string|in:admin,users',
+            'role' => 'required|string|in:admin,user',
         ]);
 
         User::create($validated);

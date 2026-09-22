@@ -43,8 +43,8 @@ class NewsController extends Controller
         // Ambil ID user yang sedang login
         $validated['created_by'] = Auth::id();
 
-        // Jika tanggal tidak diisi, gunakan waktu sekarang
-        $validated['published_at'] = $request->published_at ?? now();
+        // Tanggal rilis dibuat otomatis waktu sekarang (now)
+        $validated['published_at'] = now();
 
         News::create($validated);
 
@@ -66,7 +66,7 @@ class NewsController extends Controller
                 'Judul' => $news->title,
                 'Kategori' => $news->category->name ?? '-',
                 'Penulis' => $news->createdBy->name ?? 'Admin',
-                'Tanggal Publikasi' => $news->published_at,
+                'Tanggal Rilis' => $news->published_at ? \Carbon\Carbon::parse($news->published_at)->translatedFormat('d F Y H:i') : '-',
                 'Isi Berita' => $news->content,
                 'Foto' => $news->image,
             ],
@@ -98,7 +98,7 @@ class NewsController extends Controller
         }
 
         $validated['published_at'] =
-            $request->published_at ?? $news->published_at;
+            $request->published_at ?? ($news->published_at ?? now());
 
         $news->update($validated);
 

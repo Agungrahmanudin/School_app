@@ -36,7 +36,7 @@ class TeachersController extends Controller
 
     public function show($id)
     {
-        $teacher = Teachers::all($id);
+        $teacher = Teachers::findOrFail($id);
 
         return view('Admin.Teachers.show', [
             'title'     => 'Detail Guru',
@@ -94,8 +94,7 @@ class TeachersController extends Controller
             'gender'   => 'required|in:L,P',
             'subject'  => 'required|string|max:255',
             'position' => 'required|string|max:255',
-            'photo'    => ($requiredPhoto ? 'required|' : 'nullable|')
-                          . 'image|mimes:jpeg,png,jpg|max:5120',
+            'photo'    => ($requiredPhoto ? 'required|' : 'nullable|') . 'image|mimes:jpeg,png,jpg|max:5120',
         ]);
     }
 
@@ -112,27 +111,5 @@ class TeachersController extends Controller
         $file->move(public_path('uploads/teachers'), $name);
 
         return 'uploads/teachers/' . $name;
-    }
-
-    /**
-     * Data untuk form create/edit.
-     */
-    private function formData(
-        string $title,
-        string $saveRoute,
-        string $backRoute,
-        $record,
-        bool $edit = false
-    ): array {
-        return compact('title', 'saveRoute', 'backRoute', 'record', 'edit') + [
-            'fields' => [
-                ['name' => 'nip',      'label' => 'NIP',            'type' => 'text',   'required' => true],
-                ['name' => 'name',     'label' => 'Nama',           'type' => 'text',   'required' => true],
-                ['name' => 'gender',   'label' => 'Jenis Kelamin',  'type' => 'select', 'options' => ['L' => 'Laki-laki', 'P' => 'Perempuan']],
-                ['name' => 'subject',  'label' => 'Mata Pelajaran', 'type' => 'text',   'required' => true],
-                ['name' => 'position', 'label' => 'Jabatan',        'type' => 'text',   'required' => true],
-                ['name' => 'photo',    'label' => 'Foto',           'type' => 'file',   'required' => !$edit],
-            ],
-        ];
     }
 }

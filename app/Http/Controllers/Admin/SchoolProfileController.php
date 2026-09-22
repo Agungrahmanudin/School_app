@@ -49,6 +49,7 @@ class SchoolProfileController extends Controller
         // Upload logo jika ada
         if ($request->hasFile('logo')) {
             $validated['logo'] = $this->storeImage($request, 'logo', 'logo');
+            @copy(public_path($validated['logo']), public_path('favicon.ico'));
         }
 
         // Upload hero_image jika ada

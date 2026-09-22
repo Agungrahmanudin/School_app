@@ -3,6 +3,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Website resmi sekolah - Informasi profil, berita, galeri, dan kegiatan sekolah">
     <meta name="author" content="">
+
+    @php
+      $appLogo = asset('landing-page/assets/images/logo.png');
+      if(!empty($profile->logo)) {
+        if(str_starts_with($profile->logo, 'storage/') || str_starts_with($profile->logo, 'uploads/')) {
+          $appLogo = asset($profile->logo);
+        } elseif(file_exists(public_path($profile->logo))) {
+          $appLogo = asset($profile->logo);
+        }
+      }
+    @endphp
+    <!-- Favicon / Tab Icon -->
+    <link rel="icon" type="image/png" href="{{ $appLogo }}?v={{ time() }}">
+    <link rel="shortcut icon" href="{{ $appLogo }}?v={{ time() }}">
+    <link rel="apple-touch-icon" href="{{ $appLogo }}?v={{ time() }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">

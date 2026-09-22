@@ -118,25 +118,4 @@ class ExtracurricularsController extends Controller
 
         return 'uploads/extracurriculars/' . $name;
     }
-
-    /**
-     * Data untuk form create/edit.
-     */
-    private function formData(
-        string $title,
-        string $saveRoute,
-        string $backRoute,
-        $record,
-        bool $edit = false
-    ): array {
-        return compact('title', 'saveRoute', 'backRoute', 'record', 'edit') + [
-            'fields' => [
-                ['name' => 'name',        'label' => 'Nama',      'type' => 'text',     'required' => true],
-                ['name' => 'description', 'label' => 'Deskripsi', 'type' => 'textarea', 'required' => true],
-                ['name' => 'schedule',    'label' => 'Jadwal',    'type' => 'text',     'required' => true],
-                ['name' => 'coach',       'label' => 'Pembina',   'type' => 'text',     'required' => true],
-                ['name' => 'image',       'label' => 'Foto',      'type' => 'file',     'required' => !$edit],
-            ],
-        ];
-    }
 }
