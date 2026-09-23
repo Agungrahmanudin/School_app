@@ -10,8 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
+        if (Auth::check()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+
         return view('auth.login');
     }
 
@@ -59,10 +65,14 @@ class AuthenticationController extends Controller
             ])->withInput($request->only('email'));
         }
 
-        Auth::login($user, true);
+        Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard');
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->route('home');
     }
 
     public function logout(Request $request)

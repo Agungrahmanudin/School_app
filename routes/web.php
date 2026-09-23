@@ -27,14 +27,13 @@ Route::get('/jurusan', [HomeController::class, 'majors'])->name('landing.majors'
 Route::get('/jurusan/{id}', [HomeController::class, 'majorDetail'])->name('landing.majors.detail');
 
 // Authentication
-Route::middleware('guest')->get('/login', [AuthenticationController::class, 'login'])->name('login');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::middleware('guest')->get('/register', [AuthenticationController::class, 'register'])->name('register');
 Route::post('/login', [AuthenticationController::class, 'submitLogin'])->name('login.submit');
 Route::post('/register', [AuthenticationController::class, 'submitRegister'])->name('register.submit');
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
-
-Route::middleware(['auth'])->prefix('/admin/panel')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('/admin/panel')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Users

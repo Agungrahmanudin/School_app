@@ -44,7 +44,7 @@
               <a href="{{ route('landing.gallery') }}" class="{{ request()->routeIs('landing.gallery*') ? 'active' : '' }}">Galeri</a>
             </li>
             <li class="nav-cta">
-              <a href="{{ route('admin.dashboard') }}" class="btn-nav-cta"><i class="fa fa-sign-in-alt me-2"></i>Masuk Admin</a>
+              <a href="{{ route('login') }}" class="btn-nav-cta"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             </li>
           </ul>
           <!-- ***** Menu End ***** -->
