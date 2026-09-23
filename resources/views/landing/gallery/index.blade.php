@@ -3,22 +3,18 @@
 @section('title', 'Galeri - ' . ($profile->school_name ?? 'SMK'))
 
 @section('content')
-<div class="services section" style="padding-top: 140px; padding-bottom: 30px;">
+<div class="pricing-tables" style="padding-top: 140px; padding-bottom: 100px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <div class="section-heading">
+                <div class="section-heading text-center mb-4" style="margin-bottom: 35px !important;">
                     <h4>Galeri <em>Dokumentasi</em></h4>
-                    <img src="{{ asset('landing-page/assets/images/heading-line-dec.png') }}" alt="">
+                    <img src="{{ asset('landing-page/assets/images/heading-line-dec.png') }}" alt="" class="d-block mx-auto my-2">
                     <p>Momen kegiatan belajar mengajar, upacara, praktikum, dan fasilitas sekolah.</p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="pricing-tables" style="padding-top: 0px; padding-bottom: 100px;">
-    <div class="container">
         <div class="row">
             @forelse($galleries as $gal)
                 @php

@@ -1,10 +1,10 @@
 <footer id="newsletter">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <!-- School Info & Logo -->
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="footer-widget">
-            <h4>Tentang Sekolah</h4>
+            <h4 class="footer-widget-title">Tentang Sekolah</h4>
             <div class="logo footer-school-logo mb-3">
               @php
                 $footerLogo = asset('landing-page/assets/images/white-logo.png');
@@ -32,7 +32,7 @@
         <!-- Quick Links -->
         <div class="col-lg-2 col-md-6 mb-4">
           <div class="footer-widget">
-            <h4>Navigasi</h4>
+            <h4 class="footer-widget-title">Navigasi</h4>
             <ul>
               <li><a href="{{ route('home') }}"><i class="fa fa-angle-right me-1"></i> Beranda</a></li>
               <li><a href="{{ route('landing.profile') }}"><i class="fa fa-angle-right me-1"></i> Profil Sekolah</a></li>
@@ -46,7 +46,7 @@
         <!-- Academic & Programs -->
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="footer-widget">
-            <h4>Info</h4>
+            <h4 class="footer-widget-title">Info</h4>
             <ul>
               <li><a href="{{ route('landing.profile') }}"><i class="fa fa-angle-right me-1"></i> Visi &amp; Misi</a></li>
               <li><a href="{{ route('landing.profile') }}"><i class="fa fa-angle-right me-1"></i> Data Tenaga Pendidik</a></li>
@@ -59,7 +59,7 @@
         <!-- Contact Info -->
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="footer-widget">
-            <h4>Kontak</h4>
+            <h4 class="footer-widget-title">Kontak</h4>
             <p class="footer-contact-info"><i class="fa fa-map-marker-alt me-2 text-primary"></i> cimeonggggygsdygsd</p>
             <p class="footer-contact-info"><i class="fa fa-phone me-2 text-primary"></i> 434553</p>
             <p class="footer-contact-info"><i class="fa fa-envelope me-2 text-primary"></i> rapa38040@gmail.com</p>
@@ -69,7 +69,7 @@
 
         <!-- Copyright -->
         <div class="col-lg-12">
-          <div class="copyright-text" style="border-top: 1px solid #dee2e6 !important; padding-top: 25px;">
+          <div class="copyright-text" style="border-top: 1px solid #dee2e6 !important; padding-top: 25px; margin-top: 35px;">
             <p>dckshfvjcuhdsjrjdshger</p>
           </div>
         </div>

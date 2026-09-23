@@ -53,6 +53,18 @@
         </div>
         <div style="width: 60px; height: 4px; background: #0d6efd; border-radius: 2px; margin-bottom: 20px;"></div>
 
+        @if(!empty($major->kaprog))
+          <div class="mb-4 p-3 rounded-3 d-flex align-items-center gap-3" style="background: #f0f6ff; border-left: 4px solid #0d6efd;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; color: #0d6efd; font-size: 20px; box-shadow: 0 2px 8px rgba(13,110,253,0.15); flex-shrink: 0;">
+              <i class="fa fa-user-tie"></i>
+            </div>
+            <div>
+              <small class="text-uppercase fw-bold text-muted d-block" style="font-size: 11px; letter-spacing: 0.5px;">Kepala Program Keahlian (Kaprog)</small>
+              <h5 class="mb-0 fw-bold" style="color: #2a2a2a; font-size: 16px;">{{ $major->kaprog }}</h5>
+            </div>
+          </div>
+        @endif
+
         @if(!empty($major->description))
           <p style="font-size: 15px; color: #555; line-height: 1.8;">{{ $major->description }}</p>
         @endif

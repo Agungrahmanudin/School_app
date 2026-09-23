@@ -4,10 +4,11 @@
 
 /* School Statistics Cards */
 .school-stat-card {
-  background: #fff;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
   border-radius: 16px;
   padding: 30px 25px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -31,8 +32,10 @@
 }
 
 .school-stat-card:hover {
+  background: #fff;
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(75, 142, 241, 0.25);
+  border-color: rgba(75, 142, 241, 0.3);
 }
 
 .school-stat-card:hover::before {
@@ -623,6 +626,11 @@ a:hover .major-card .concentration-list li:before,
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
 }
 
 .service-item::before {
@@ -649,21 +657,53 @@ a:hover .service-item::before,
 }
 
 .service-item .icon {
+  margin: 0 auto 20px auto !important;
+  float: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
   transition: all 0.3s ease;
+}
+
+.service-item .icon img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  display: block !important;
+  margin: 0 auto !important;
 }
 
 a:hover .service-item .icon,
 .service-item:hover .icon {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.08) !important;
 }
 
 .service-item h4 {
+  text-align: center !important;
+  width: 100% !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
   transition: color 0.3s ease;
 }
 
 a:hover .service-item h4,
 .service-item:hover h4 {
   color: #4b8ef1;
+}
+
+.service-item p {
+  text-align: center !important;
+  width: 100% !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
 }
 
 /* School Profile Photo */
@@ -700,81 +740,72 @@ a:hover .service-item h4,
 
 /* Footer Improvements */
 footer#newsletter {
-  background: #f8f9fa !important;
+  background: #ffffff !important;
   background-image: none !important;
-  background-color: #f8f9fa !important;
+  background-color: #ffffff !important;
   padding: 70px 0 30px;
   color: #2a2a2a;
   width: 100%;
-  margin: 0;
-  border-top: 1px solid #e5e7eb;
+  margin: 0 !important;
+  border-top: 1px solid #e9ecef;
 }
 
-footer#newsletter .container,
-footer#newsletter .container-fluid {
-  max-width: 100%;
-  width: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin: 0;
-}
-
-@media (min-width: 1400px) {
-  footer#newsletter .container,
-  footer#newsletter .container-fluid {
-    max-width: 100%;
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-}
-
-@media (max-width: 992px) {
-  footer#newsletter .container,
-  footer#newsletter .container-fluid {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-@media (max-width: 576px) {
-  footer#newsletter .container,
-  footer#newsletter .container-fluid {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
+footer .footer-widget-title,
 footer .footer-widget h4 {
-  color: #2a2a2a;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  position: relative;
-  padding-bottom: 12px;
+  color: #2a2a2a !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  position: relative !important;
+  display: block !important;
+  padding-bottom: 0 !important;
 }
 
-footer .footer-widget h4::after,
-footer .footer-widget h4:after {
+footer .footer-widget-title::after,
+footer .footer-widget h4::after {
   content: '' !important;
-  position: absolute !important;
-  left: 0;
-  bottom: 0 !important;
-  width: 45px !important;
+  display: block !important;
+  position: static !important;
+  width: 40px !important;
   height: 3px !important;
   background: #0d6efd !important;
   border-radius: 2px !important;
+  margin-top: 8px !important;
 }
 
 @media (max-width: 991.98px) {
+  footer .footer-widget-title,
   footer .footer-widget h4 {
     text-align: center !important;
   }
 
-  footer .footer-widget h4::after,
-  footer .footer-widget h4:after {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+  footer .footer-widget-title::after,
+  footer .footer-widget h4::after {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
+}
+
+/* Alternating Section Cards Styling */
+#pricing.section-odd-white .school-news-card {
+  background: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04) !important;
+}
+#pricing.section-odd-white .school-news-card:hover {
+  background: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(75, 142, 241, 0.25) !important;
+  border-color: rgba(75, 142, 241, 0.3) !important;
+}
+
+.section-even-gray .school-news-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+}
+.section-even-gray .school-news-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 12px 30px rgba(75, 142, 241, 0.25) !important;
 }
 
 footer .footer-widget ul {
@@ -1467,9 +1498,8 @@ footer .copyright-text {
 
 /* Footer Inline Styles */
 footer#newsletter {
-  margin-top: 40px !important;
-  padding-top: 40px !important;
-  background-color: #f8f9fa !important;
+  margin-top: 0 !important;
+  background-color: #ffffff !important;
 }
 
 .footer-description-text {
@@ -2030,3 +2060,103 @@ footer#newsletter {
     font-size: 13px !important;
   }
 }
+
+/* Jarak standar antara judul section dan kartu */
+.section-heading,
+.services .section-heading,
+.pricing-tables .section-heading {
+  margin-bottom: 35px !important;
+}
+
+/* Hero Image & Floating Badges */
+.hero-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.hero-image-wrap > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .hero-image-wrap { height: 380px; }
+}
+
+@media (max-width: 576px) {
+  .hero-image-wrap { height: 280px; }
+}
+
+.hero-float-card {
+  position: absolute;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 220px;
+  z-index: 5;
+}
+
+.hero-float-card.top-right {
+  top: 20px;
+  right: -15px;
+}
+
+.hero-float-card.bottom-left {
+  bottom: 20px;
+  left: -15px;
+}
+
+.hero-float-card .stars {
+  color: #fbbf24;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.hero-float-card h6 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 2px;
+}
+
+.hero-float-card small {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.hero-float-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+@media (max-width: 991px) {
+  .hero-float-card.top-right { right: 8px; }
+  .hero-float-card.bottom-left { left: 8px; }
+}
+
+@media (max-width: 576px) {
+  .hero-float-card { padding: 10px 12px; max-width: 170px; }
+  .hero-float-card h6 { font-size: 13px; }
+  .hero-float-card small { font-size: 11px; }
+}
+

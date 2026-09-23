@@ -10,6 +10,8 @@ class Majors extends Model
         'name',
         'code',
         'description',
+        'concentrations',
+        'kaprog',
         'image',
     ];
 }

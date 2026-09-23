@@ -19,11 +19,11 @@ class HomeController extends Controller
         $totalStudents = Students::count();
         $totalExtra = Extracurriculars::count();
         $totalGalleries = Galleries::count();
-        $majors = Majors::get();
+        $majors = Majors::latest()->take(3)->get();
 
         $news = News::with('category')->latest()->take(3)->get();
         $galleries = Galleries::latest()->take(3)->get();
-        $extracurriculars = Extracurriculars::latest()->get();
+        $extracurriculars = Extracurriculars::latest()->take(3)->get();
         $teachers = Teachers::take(4)->get();
 
         $principal = Teachers::where('position', 'LIKE', '%Kepala Sekolah%')

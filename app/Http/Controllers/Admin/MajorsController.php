@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Majors;
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -17,7 +18,8 @@ class MajorsController extends Controller
     }
     public function create()
     {
-        return view('Admin.Majors.create');
+        $teachers = Teachers::orderBy('name')->get();
+        return view('Admin.Majors.create', compact('teachers'));
     }
 
     public function store(Request $request)
@@ -43,7 +45,9 @@ class MajorsController extends Controller
             'fields' => [
                 'Nama Jurusan' => $major->name,
                 'Kode' => $major->code,
+                'Kepala Program Keahlian (Kaprog)' => $major->kaprog,
                 'Deskripsi' => $major->description,
+                'Konsentrasi Keahlian' => $major->concentrations,
                 'Gambar' => $major->image,
             ],
         ]);
@@ -52,7 +56,8 @@ class MajorsController extends Controller
     public function edit($id)
     {
         $major = Majors::findOrFail($id);
-        return view('admin.majors.edit', compact('major'));
+        $teachers = Teachers::orderBy('name')->get();
+        return view('admin.majors.edit', compact('major', 'teachers'));
     }
     public function update(Request $request, $id)
     {
@@ -80,6 +85,7 @@ class MajorsController extends Controller
         return $request->validate([
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:10|unique:majors,code,' . ($request->route('id') ?? 'NULL'),
+            'kaprog' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'concentrations' => 'nullable|string',
             'image' => ($requiredImage ? 'nullable|' : 'nullable|') . 'image|mimes:jpeg,png,jpg|max:5120',

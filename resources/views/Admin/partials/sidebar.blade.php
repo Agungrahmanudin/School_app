@@ -1,23 +1,5 @@
 <!-- Start Sidebar -->
 
-<style>
-.textmenu .tab-content {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-.textmenu .list-group-flush {
-    margin-top: 0 !important;
-}
-.textmenu .list-group-item:first-child {
-    padding-top: 0.5rem !important;
-    margin-top: 0 !important;
-    border-top: none !important;
-}
-.textmenu {
-    padding-top: 0.5rem !important;
-}
-</style>
-
 <aside class="sidebar-wrapper">
 
     <!-- =====================================================

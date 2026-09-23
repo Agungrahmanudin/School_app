@@ -162,7 +162,7 @@
   </div>
 
   <!-- ***** Seksi Sambutan Kepala Sekolah, Visi & Misi (Referensi: SMKN 1 Talaga) ***** -->
-  <div id="about" class="about-us section about-section-gray">
+  <div id="about" class="about-us section" style="padding-top: 80px; padding-bottom: 80px; background: #f8f9fa !important;">
     <div class="container">
       <!-- Section Title -->
       <div class="row mb-4">
@@ -311,7 +311,7 @@
   </div>
 
   <!-- ***** Program Keahlian / Jurusan ***** -->
-  <div class="services section" style="padding-top: 100px; padding-bottom: 100px; background: #fff;">
+  <div class="services section section-odd-white" style="padding-top: 80px; padding-bottom: 80px; background: #ffffff;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -335,7 +335,7 @@
               }
             }
           @endphp
-          <div class="col-lg-4 col-md-6 mb-4 {{ $index >= 3 ? 'offset-lg-1' : '' }}">
+          <div class="col-lg-4 col-md-6 mb-4">
             <a href="{{ route('landing.majors.detail', $major->id) }}" class="text-decoration-none">
             <div class="major-card">
               @if($majorImage)
@@ -349,6 +349,11 @@
               @endif
               <h5 class="major-title">{{ $major->name }} ({{ $major->code }})</h5>
               <p class="major-desc">{{ Str::limit($major->description ?? 'Kelompok Program Keahlian unggulan dengan kompetensi yang dikembangkan terarah.', 100) }}</p>
+              @if(!empty($major->kaprog))
+                <div class="major-kaprog mb-3 py-1 px-3 rounded-pill text-center d-inline-block" style="background: rgba(13, 110, 253, 0.08); font-size: 13px; color: #0d6efd; font-weight: 600;">
+                  <i class="fa fa-user-tie me-1"></i> Kaprog: {{ $major->kaprog }}
+                </div>
+              @endif
               @if(!empty($major->concentrations))
                 @php
                   $concentrations = array_filter(array_map('trim', explode("\n", $major->concentrations)));
@@ -367,190 +372,42 @@
             </div>
             </a>
           </div>
-          @if($index == 2)
-            </div><div class="row justify-content-center">
-          @endif
         @empty
           <div class="col-12 text-center py-5">
             <p class="text-muted">Belum ada data jurusan yang tersedia.</p>
           </div>
         @endforelse
       </div>
-    </div>
-  </div>
 
-<style>
-.major-card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 30px 25px;
-  text-align: center;
-  height: 100%;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-a:hover .major-card,
-.major-card:hover {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transform: translateY(-5px);
-  background: #fff;
-}
-.major-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-}
-.major-icon i {
-  font-size: 36px;
-  color: white;
-}
-.major-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin-bottom: 15px;
-}
-.major-desc {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-.major-concentration {
-  border-top: 1px solid #dee2e6;
-  padding-top: 15px;
-  text-align: left;
-}
-.concentration-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: #999;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-}
-.concentration-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.concentration-list li {
-  font-size: 13px;
-  color: #6c757d;
-  padding: 3px 0;
-}
-.concentration-list li:before {
-  content: "→ ";
-  margin-right: 5px;
-}
-
-/* Hero image floating cards */
-.hero-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 460px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-.hero-image-wrap > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-@media (max-width: 991px) {
-  .hero-image-wrap { height: 380px; }
-}
-@media (max-width: 576px) {
-  .hero-image-wrap { height: 280px; }
-}
-.hero-float-card {
-  position: absolute;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 220px;
-  z-index: 5;
-}
-.hero-float-card.top-right {
-  top: 20px;
-  right: -15px;
-}
-.hero-float-card.bottom-left {
-  bottom: 20px;
-  left: -15px;
-}
-.hero-float-card .stars {
-  color: #fbbf24;
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-.hero-float-card h6 {
-  font-size: 15px;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0 0 2px;
-}
-.hero-float-card small {
-  font-size: 12px;
-  color: #64748b;
-  line-height: 1.3;
-}
-.hero-float-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 18px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-}
-@media (max-width: 991px) {
-  .hero-float-card.top-right { right: 8px; }
-  .hero-float-card.bottom-left { left: 8px; }
-}
-@media (max-width: 576px) {
-  .hero-float-card { padding: 10px 12px; max-width: 170px; }
-  .hero-float-card h6 { font-size: 13px; }
-  .hero-float-card small { font-size: 11px; }
-}
-</style>
-
-  <!-- ***** Ekstrakurikuler ***** -->
-  <div class="services section" style="padding-top: 60px; padding-bottom: 30px; background: #f8f9fa;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading text-center">
-            <h4>Kegiatan <em>Ekstrakurikuler</em></h4>
-            <img src="{{ asset('landing-page/assets/images/heading-line-dec.png') }}" alt="" class="d-block mx-auto my-2">
-            <p>Wadah pengembangan minat, bakat, dan soft skills melalui berbagai kegiatan di luar pembelajaran formal.</p>
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <div class="white-button">
+            <a href="{{ route('landing.majors') }}" style="background: #4b8ef1; color: #fff !important; padding: 12px 35px !important; border-radius: 25px; box-shadow: 0 4px 15px rgba(75,142,241,0.3);">
+              Lihat Semua Jurusan <i class="fa fa-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="services section" style="padding-top: 0px; padding-bottom: 100px; background: #f8f9fa;">
+  <!-- ***** Ekstrakurikuler ***** -->
+  <div class="services section section-even-gray" style="padding-top: 80px; padding-bottom: 80px; background: #f8f9fa;">
     <div class="container">
       <div class="row">
-        @forelse($extracurriculars->take(6) as $index => $extra)
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading text-center mb-4" style="margin-bottom: 35px !important;">
+            <h4>Kegiatan <em>Ekstrakurikuler</em></h4>
+            <img src="{{ asset('landing-page/assets/images/heading-line-dec.png') }}" alt="" class="d-block mx-auto my-2">
+            <p>Wadah pengembangan minat, bakat, dan soft skills melalui berbagai kegiatan di luar pembelajaran formal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        @forelse($extracurriculars as $index => $extra)
           @php
-            $serviceClass = ['first-service', 'second-service', 'third-service', 'fourth-service'][$index % 4];
-            $extraImage = null;
+            $extraImage = asset('landing-page/assets/images/about-right-dec.png');
             if (!empty($extra->image)) {
               if (str_starts_with($extra->image, 'storage/') || str_starts_with($extra->image, 'uploads/')) {
                 $extraImage = asset($extra->image);
@@ -560,19 +417,34 @@ a:hover .major-card,
             }
           @endphp
           <div class="col-lg-4 col-md-6 mb-4">
-            <a href="{{ route('landing.extracurriculars.detail', $extra->id) }}" class="text-decoration-none">
-            <div class="service-item {{ $serviceClass }}">
-              @if($extraImage)
-                <div class="icon" style="background-image: none; width: 80px; height: 80px; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
-                  <img src="{{ $extraImage }}" alt="{{ $extra->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            <div class="school-news-card h-100">
+              <div class="news-img-box">
+                <img src="{{ $extraImage }}" alt="{{ $extra->name }}">
+                <span class="news-badge"><i class="fa fa-running me-1"></i> Ekskul</span>
+              </div>
+              <div class="news-body">
+                <div class="news-date">
+                  <i class="fa fa-clock text-primary me-1"></i>
+                  <span>{{ $extra->schedule ?? 'Kegiatan Rutin' }}</span>
                 </div>
-              @else
-                <div class="icon"></div>
-              @endif
-              <h4>{{ $extra->name }}</h4>
-              <p>{{ Str::limit($extra->description ?? 'Kegiatan ekstrakurikuler untuk mengembangkan potensi dan bakat siswa.', 100) }}</p>
+                <h4 class="news-title">
+                  <a href="{{ route('landing.extracurriculars.detail', $extra->id) }}">{{ Str::limit($extra->name, 45) }}</a>
+                </h4>
+                <p class="news-excerpt">
+                  {{ Str::limit($extra->description ?? 'Wadah pengembangan potensi, minat, dan bakat siswa di sekolah.', 90) }}
+                </p>
+                <div class="news-footer mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                  @if(!empty($extra->coach))
+                    <small class="text-muted"><i class="fa fa-user-tie text-primary me-1"></i> {{ Str::limit($extra->coach, 18) }}</small>
+                  @else
+                    <small class="text-muted"><i class="fa fa-check-circle text-success me-1"></i> Aktif</small>
+                  @endif
+                  <a href="{{ route('landing.extracurriculars.detail', $extra->id) }}" class="btn-stat-link">
+                    Detail Ekskul <i class="fa fa-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            </a>
           </div>
         @empty
           <div class="col-12 text-center py-5">
@@ -580,11 +452,21 @@ a:hover .major-card,
           </div>
         @endforelse
       </div>
+
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <div class="white-button">
+            <a href="{{ route('landing.extracurriculars') }}" style="background: #4b8ef1; color: #fff !important; padding: 12px 35px !important; border-radius: 25px; box-shadow: 0 4px 15px rgba(75,142,241,0.3);">
+              Lihat Semua Ekstrakurikuler <i class="fa fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ***** Berita Kegiatan Sekolah via Modern Cards ***** -->
-  <div id="pricing" class="pricing-tables" style="padding-top: 100px; background: #f8f9fa;">
+  <div id="pricing" class="pricing-tables section-odd-white" style="padding-top: 80px; padding-bottom: 80px; background: #ffffff !important;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -653,7 +535,7 @@ a:hover .major-card,
   </div> 
 
   <!-- ***** Galeri Terbaru ***** -->
-  <div class="services section" style="padding-top: 80px; padding-bottom: 80px; background: #fff;">
+  <div class="services section section-even-gray" style="padding-top: 80px; padding-bottom: 80px; background: #f8f9fa;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">

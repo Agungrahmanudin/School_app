@@ -35,8 +35,9 @@
                     <thead class="table-light">
                         <tr>
                             <th width="50">No</th>
-                            <th width="100">Kode</th>
+                            <th width="90">Kode</th>
                             <th>Nama Jurusan</th>
+                            <th>Kaprog</th>
                             <th>Deskripsi</th>
                             <th>Konsentrasi Keahlian</th>
                             <th width="100" class="text-center">Gambar</th>
@@ -56,6 +57,13 @@
                                 <td>{{ $majors->firstItem() + $index }}</td>
                                 <td><span class="badge bg-primary">{{ $major->code }}</span></td>
                                 <td class="fw-semibold">{{ $major->name }}</td>
+                                <td>
+                                    @if(!empty($major->kaprog))
+                                        <span class="fw-semibold text-dark"><i class="bi bi-person-badge text-primary me-1"></i>{{ $major->kaprog }}</span>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>{{ Str::limit($major->description, 80) }}</td>
                                 <td>
                                     @if(!empty($major->concentrations))
@@ -92,7 +100,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center py-4 text-muted">
+                                <td colspan="8" class="text-center py-4 text-muted">
                                     <i class="bi bi-inbox fs-1 d-block mb-2"></i>
                                     Belum ada data jurusan.
                                 </td>

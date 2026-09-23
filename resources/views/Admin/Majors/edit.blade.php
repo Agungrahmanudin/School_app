@@ -44,6 +44,16 @@
                                 <input type="text" name="code" class="form-control" value="{{ old('code', $major->code) }}" required maxlength="10">
                             </div>
                             <div class="col-12 mb-3">
+                                <label class="form-label fw-bold">Kepala Program Keahlian (Kaprog / Kaprodi)</label>
+                                <input type="text" name="kaprog" class="form-control" value="{{ old('kaprog', $major->kaprog) }}" placeholder="Contoh: Bpk. Ahmad Fauzi, S.Kom." list="teachersList">
+                                <datalist id="teachersList">
+                                    @foreach($teachers as $teacher)
+                                        <option value="{{ $teacher->name }}">{{ $teacher->position ? $teacher->name . ' (' . $teacher->position . ')' : $teacher->name }}</option>
+                                    @endforeach
+                                </datalist>
+                                <small class="text-muted">Bisa diketik manual atau memilih dari daftar guru yang terdaftar.</small>
+                            </div>
+                            <div class="col-12 mb-3">
                                 <label class="form-label fw-bold">Deskripsi</label>
                                 <textarea name="description" rows="5" class="form-control">{{ old('description', $major->description) }}</textarea>
                             </div>

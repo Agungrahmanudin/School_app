@@ -11,39 +11,60 @@ class MajorsSeeder extends Seeder
     {
         $majors = [
             [
-                'name' => 'Teknik Komputer dan Jaringan',
-                'code' => 'TKJ',
-                'description' => 'Program keahlian yang mempelajari cara merakit komputer, menginstal sistem operasi, menginstal aplikasi, dan belajar jaringan dasar.',
-            ],
-            [
                 'name' => 'Rekayasa Perangkat Lunak',
                 'code' => 'RPL',
-                'description' => 'Program keahlian yang mempelajari pemrograman komputer, pengembangan aplikasi, database, dan rekayasa perangkat lunak.',
+                'kaprog' => 'Agung Rahmanudin, S.Kom.',
+                'concentrations' => "Pengembangan Web Modern\nPemrograman Aplikasi Mobile (Android & iOS)\nBasis Data & Cloud Computing",
+                'description' => 'Program keahlian yang fokus pada kompetensi pembuatan software, website, aplikasi mobile, pengelolaan basis data, dan algoritma pemrograman.',
+                'image' => 'uploads/majors/major_1790050514_6ab200d2d8b57.jpg',
             ],
             [
-                'name' => 'Multimedia',
-                'code' => 'MM',
-                'description' => 'Program keahlian yang mempelajari desain grafis, animasi, video editing, dan produksi multimedia.',
+                'name' => 'Teknik Komputer dan Jaringan',
+                'code' => 'TKJ',
+                'kaprog' => 'Budi Santoso, S.T.',
+                'concentrations' => "Administrasi Server & Linux\nInfrastruktur Jaringan & Fiber Optik\nKeamanan Jaringan & Cyber Security",
+                'description' => 'Membekali siswa dengan keahlian perakitan komputer, instalasi jaringan LAN/WAN, routing, konfigurasi mikrotik, dan pengelolaan server jaringan.',
+                'image' => 'landing-page/assets/images/about-right-dec.png',
             ],
             [
-                'name' => 'Teknik Kendaraan Ringan',
-                'code' => 'TKR',
-                'description' => 'Program keahlian yang mempelajari perawatan dan perbaikan kendaraan bermotor roda empat.',
+                'name' => 'Desain Komunikasi Visual',
+                'code' => 'DKV',
+                'kaprog' => 'Siti Nurhaliza, S.Ds.',
+                'concentrations' => "Desain Grafis & Branding\nFotografi & Sinematografi\nAnimasi 2D & 3D",
+                'description' => 'Mengembangkan kreativitas visual dalam pembuatan desain grafis, media promosi, fotografi komersial, motion graphics, dan produksi konten multimedia.',
+                'image' => 'landing-page/assets/images/slider-dec.png',
+            ],
+            [
+                'name' => 'Teknik Kendaraan Ringan Otomotif',
+                'code' => 'TKRO',
+                'kaprog' => 'Hendra Gunawan, S.Pd.',
+                'concentrations' => "Pemeliharaan Mesin Kendaraan Ringan\nSistem Kelistrikan Otomotif Modern\nChasis & Sistem Pemindah Tenaga",
+                'description' => 'Menghasilkan teknisi otomotif andal yang terampil dalam perawatan mesin mobil, sistem kelistrikan EFI, engine management, dan keselamatan berkendara.',
+                'image' => 'landing-page/assets/images/about-right-dec.png',
             ],
             [
                 'name' => 'Akuntansi dan Keuangan Lembaga',
                 'code' => 'AKL',
-                'description' => 'Program keahlian yang mempelajari akuntansi, perpajakan, dan administrasi keuangan.',
+                'kaprog' => 'Dra. Hj. Ratna Sari, M.Ak.',
+                'concentrations' => "Komputer Akuntansi (MYOB & Accurate)\nPerpajakan Badan & Pribadi\nPerbankan Syariah & Lembaga Keuangan",
+                'description' => 'Mendidik tenaga ahli akuntansi yang kompeten dalam pencatatan laporan keuangan, audit, analisis transaksi bisnis, dan pengelolaan pajak.',
+                'image' => 'landing-page/assets/images/pricing-table-01.png',
             ],
             [
-                'name' => 'Bisnis Daring dan Pemasaran',
-                'code' => 'BDP',
-                'description' => 'Program keahlian yang mempelajari pemasaran online, e-commerce, dan strategi bisnis digital.',
+                'name' => 'Manajemen Perkantoran & Bisnis',
+                'code' => 'MPLB',
+                'kaprog' => 'Rina Marlina, S.Pd.',
+                'concentrations' => "Otomatisasi Tata Kelola Perkantoran\nKearsipan Digital & Logistik\nKomunikasi Bisnis & Public Relations",
+                'description' => 'Membekali keahlian administrasi perkantoran modern, korespondensi bahasa Inggris, pengarsipan berbasis cloud, dan pelayanan prima kepada pelanggan.',
+                'image' => 'landing-page/assets/images/slider-dec.png',
             ],
         ];
 
         foreach ($majors as $major) {
-            Majors::create($major);
+            Majors::updateOrCreate(
+                ['code' => $major['code']],
+                $major
+            );
         }
     }
 }
