@@ -44,8 +44,61 @@
               <img src="{{ $detailImg }}" alt="{{ $article->title }}" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
 
-            <div style="font-size: 16px; line-height: 1.9; color: #444; white-space: pre-line; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
-              {{ $article->content }}
+            <style>
+              .news-article-content {
+                font-size: 16px;
+                line-height: 1.9;
+                color: #444;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+              }
+              .news-article-content p {
+                margin-bottom: 1rem;
+              }
+              .news-article-content ul {
+                list-style-type: disc !important;
+                padding-left: 25px !important;
+                margin-bottom: 15px !important;
+              }
+              .news-article-content ol {
+                list-style-type: decimal !important;
+                padding-left: 25px !important;
+                margin-bottom: 15px !important;
+              }
+              .news-article-content li {
+                margin-bottom: 6px;
+              }
+              .news-article-content img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 10px 0;
+              }
+              .news-article-content table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 15px 0;
+              }
+              .news-article-content table, .news-article-content th, .news-article-content td {
+                border: 1px solid #dee2e6;
+                padding: 8px 12px;
+              }
+              .news-article-content blockquote {
+                border-left: 4px solid #204ecf;
+                padding: 10px 15px;
+                margin: 15px 0;
+                background: #f8f9fa;
+                font-style: italic;
+              }
+            </style>
+
+            <div class="news-article-content">
+              @if(strip_tags($article->content) === $article->content)
+                {!! nl2br(e($article->content)) !!}
+              @else
+                {!! $article->content !!}
+              @endif
             </div>
 
             <div class="border-top pt-4 mt-5 d-flex justify-content-between align-items-center">

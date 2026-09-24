@@ -3,15 +3,42 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\StudentsImport;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentsController extends Controller
 {
-    /* =========================================================
-     |  CRUD
-     ========================================================= */
+     //import
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv|max:10240',
+        ], [
+            'file.required' => 'File Excel wajib diunggah.',
+            'file.mimes'    => 'File harus berformat .xlsx, .xls, atau .csv.',
+            'file.max'      => 'Ukuran file maksimal adalah 10MB.',
+        ]);
+
+        try {
+            $import = new StudentsImport();
+            Excel::import($import, $request->file('file'));
+
+            $count = $import->getImportedCount();
+            $skipped = $import->getSkippedRows();
+
+            $message = "Berhasil mengimpor {$count} data siswa.";
+            if (!empty($skipped)) {
+                $message .= ' Catatan: ' . implode(' ', array_slice($skipped, 0, 3));
+            }
+
+            return redirect()->route('admin.siswa')->with('success', $message);
+        } catch (\Exception $e) {
+            return redirect()->route('admin.siswa')->with('error', 'Gagal mengimpor data: ' . $e->getMessage());
+        }
+    }
 
     public function index()
     {

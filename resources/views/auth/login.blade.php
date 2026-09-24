@@ -12,13 +12,27 @@
                         <div class="col-lg-6">
                             <div class="card-body p-4 p-sm-5">
                                 <h5 class="card-title">Sign In</h5>
-                                <p class="card-text mb-5">See your growth and get consulting support!</p>
+                                <p class="card-text mb-5">Halaman Login Smkn 1 Talaga</p>
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}
                                     </div>
                                 @endif
-                                @if ($errors->any())
+                                @php
+                                    $secondsRemaining = session('lockout_seconds') ?? ($lockoutSeconds ?? 0);
+                                @endphp
+
+                                <div id="lockout-alert" class="alert alert-danger {{ $secondsRemaining > 0 ? '' : 'd-none' }}" role="alert">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-shield-lock-fill fs-4 me-2"></i>
+                                        <div>
+                                            <strong>Akses Login Anda Di kunci</strong><br>
+                                            <span id="lockout-message">Salah memasukkan email/password 3 kali. Tombol login dinonaktifkan selama <span id="countdown-text" class="fw-bold">{{ $secondsRemaining }}</span> detik.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @if ($errors->any() && $secondsRemaining <= 0)
                                     <div class="alert alert-danger">
                                         <ul class="mb-0">
                                             @foreach ($errors->all() as $error)
@@ -58,7 +72,9 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary radius-30">Sign In</button>
+                                                <button type="submit" id="btn-login" class="btn btn-primary radius-30" {{ $secondsRemaining > 0 ? 'disabled' : '' }}>
+                                                    <span id="btn-login-text">{{ $secondsRemaining > 0 ? "Terkunci ({$secondsRemaining}s)" : 'Sign In' }}</span>
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -74,4 +90,52 @@
             </div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let seconds = {{ $secondsRemaining }};
+            const loginBtn = document.getElementById('btn-login');
+            const loginBtnText = document.getElementById('btn-login-text');
+            const lockoutAlert = document.getElementById('lockout-alert');
+            const countdownText = document.getElementById('countdown-text');
+            const form = document.querySelector('form.form-body');
+
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    if (loginBtn && loginBtn.disabled) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+            }
+
+            if (seconds > 0 && loginBtn) {
+                loginBtn.disabled = true;
+
+                const timer = setInterval(function () {
+                    seconds--;
+
+                    if (countdownText) {
+                        countdownText.innerText = seconds;
+                    }
+
+                    if (loginBtnText) {
+                        loginBtnText.innerText = `Terkunci (${seconds}s)`;
+                    }
+
+                    if (seconds <= 0) {
+                        clearInterval(timer);
+                        loginBtn.disabled = false;
+                        if (loginBtnText) {
+                            loginBtnText.innerText = 'Sign In';
+                        }
+                        if (lockoutAlert) {
+                            lockoutAlert.className = 'alert alert-success';
+                            lockoutAlert.innerHTML = '<div class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 me-2"></i><div><strong>Waktu tunggu selesai!</strong><br>Silakan coba login kembali.</div></div>';
+                        }
+                    }
+                }, 1000);
+            }
+        });
+    </script>
 @endsection

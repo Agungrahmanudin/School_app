@@ -38,9 +38,8 @@
                                 <small class="text-muted d-block mb-4">Format foto: JPG, JPEG, PNG. Maksimal 5MB.</small>
                             </div>
 
-                            <div class="mb-4"><label class="form-label fw-bold">Deskripsi <span
-                                        class="text-danger">*</span></label>
-                                <textarea name="description" rows="7" class="form-control" required>{{ old('description') }}</textarea>
+                            <div class="mb-4"><label class="form-label fw-bold ">Deskripsi <span class="text-danger">*</span></label>
+                                <textarea name="content" rows="7" class="form-control" required>{{ old('$gallery->description') }}</textarea>
                             </div>
 
                             <div class="d-flex justify-content-end gap-2"><a href="{{ route('admin.galeri') }}"

@@ -46,6 +46,8 @@ class ExtracurricularsController extends Controller
             'fields'    => [
                 'Nama'      => $item->name,
                 'Deskripsi' => $item->description,
+                'Kegiatan'  => $item->activities,
+                'Jadwal'    => $item->schedule,
                 'Pembina'   => $item->coach,
                 'Foto'      => $item->image,
             ],

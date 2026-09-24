@@ -11,7 +11,10 @@
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
+            <div class="ms-auto d-flex gap-2">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importExcelModal">
+                    <i class="bi bi-file-earmark-excel me-1"></i>Import Excel
+                </button>
                 <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-lg me-1"></i>Tambah Siswa
                 </a>
@@ -21,6 +24,24 @@
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show">
                 <i class="bi bi-check-circle me-1"></i>{{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show">
+                <i class="bi bi-exclamation-triangle me-1"></i>{{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif
@@ -114,6 +135,47 @@
                         {{ $students->total() }} data
                     </small>
                     {{ $students->links('vendor.pagination.custom') }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Import Excel -->
+        <div class="modal fade" id="importExcelModal" tabindex="-1" aria-labelledby="importExcelModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{{ route('admin.siswa.import') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="importExcelModalLabel">
+                                <i class="bi bi-file-earmark-excel me-1 text-success"></i>Import Data Siswa
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-info py-2">
+                                <small>
+                                    <strong>Petunjuk Penggunaan:</strong>
+                                    <ul class="mb-1 ps-3">
+                                        <li>Format file: <strong>.xlsx</strong>, <strong>.xls</strong>, atau <strong>.csv</strong></li>
+                                        <li>Kolom wajib: <strong>NIS</strong> dan <strong>Nama</strong></li>
+                                        <li>Kolom lain: <strong>Jenis Kelamin (L/P), Kelas, Jurusan</strong></li>
+                                        <li>Jika NIS sudah ada, data siswa akan diperbarui secara otomatis.</li>
+                                    </ul>
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="excelFile" class="form-label fw-bold">Pilih File Excel <span class="text-danger">*</span></label>
+                                <input type="file" name="file" id="excelFile" class="form-control" accept=".xlsx,.xls,.csv" required>
+                                <small class="text-muted">Ukuran maksimal file: 10MB.</small>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-upload me-1"></i>Unggah & Import
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

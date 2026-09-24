@@ -26,7 +26,7 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
+                                <th width="50">No</th>
                                 <th>NIP</th>
                                 <th>Nama</th>
                                 <th>Jenis Kelamin</th>
@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($teachers as $teacher)
+                            @forelse($teachers as $index => $teacher)
                                 @php
                                     $teacherPhoto = asset('assets_admin/assets/images/avatars/avatar-1.png');
                                     if (!empty($teacher->photo)) {
@@ -52,7 +52,7 @@
                                     }
                                 @endphp
                                 <tr>
-                                    <td>{{ $teacher->id }}</td>
+                                    <td>{{ $teachers->firstItem() + $index }}</td>
                                     <td>{{ $teacher->nip }}</td>
                                     <td>{{ $teacher->name }}</td>
                                     <td>{{ $teacher->gender === 'L' ? 'Laki-laki' : 'Perempuan' }}</td>

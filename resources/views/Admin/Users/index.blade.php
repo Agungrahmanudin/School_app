@@ -29,7 +29,7 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
+                                <th width="50">No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -38,9 +38,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($users as $user)
+                            @forelse($users as $index => $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $users->firstItem() + $index }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td><span

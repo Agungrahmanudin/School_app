@@ -71,6 +71,7 @@ Route::middleware(['auth', 'admin'])->prefix('/admin/panel')->group(function () 
     Route::get('siswa', [StudentsController::class, 'index'])->name('admin.siswa');
     Route::get('siswa/create', [StudentsController::class, 'create'])->name('admin.siswa.create');
     Route::post('siswa', [StudentsController::class, 'store'])->name('admin.siswa.store');
+    Route::post('siswa/import', [StudentsController::class, 'import'])->name('admin.siswa.import');
     Route::get('siswa/{id}', [StudentsController::class, 'show'])->name('admin.siswa.show');
     Route::get('siswa/{id}/edit', [StudentsController::class, 'edit'])->name('admin.siswa.edit');
     Route::put('siswa/{id}', [StudentsController::class, 'update'])->name('admin.siswa.update');

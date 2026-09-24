@@ -48,7 +48,7 @@ class MajorsController extends Controller
                 'Kepala Program Keahlian (Kaprog)' => $major->kaprog,
                 'Deskripsi' => $major->description,
                 'Konsentrasi Keahlian' => $major->concentrations,
-                'Gambar' => $major->image,
+                'Foto' => $major->image,
             ],
         ]);
     }

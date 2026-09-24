@@ -48,7 +48,7 @@
                   </a>
                 </h5>
                 <p class="news-excerpt">
-                  {{ Str::limit(strip_tags($item->content), 100) }}
+                  {!! Str::limit(str_replace('&nbsp;', ' ', strip_tags($item->content, '<b><strong><i><em><u>')), 110) !!}
                 </p>
                 <div class="news-footer mt-auto">
                   <a href="{{ route('landing.news.detail', $item->slug) }}" class="btn-stat-link">

@@ -55,7 +55,7 @@
                 <span class="fw-semibold">{{ $paginator->lastItem() }}</span>
                 {!! __('dari') !!}
                 <span class="fw-semibold">{{ $paginator->total() }}</span>
-                {!! __('hasil') !!}
+                {!! __('data') !!}
             </p>
         </div>
     </nav>

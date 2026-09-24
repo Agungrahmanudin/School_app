@@ -61,7 +61,7 @@
 
                         <div class="mb-4">
                             <label class="form-label fw-bold">Isi Konten Berita <span class="text-danger">*</span></label>
-                            <textarea name="content" rows="8" class="form-control" placeholder="Tuliskan isi artikel / berita selengkapnya di sini..." required>{{ old('content') }}</textarea>
+                            <textarea name="content" rows="10" class="from-control tinymce-editor" placeholder="Tuliskan isi artikel/berita selengkapnya di sini...">{{old ('content')}}</textarea>
                         </div>
 
                         <div class="d-flex justify-content-end gap-2">

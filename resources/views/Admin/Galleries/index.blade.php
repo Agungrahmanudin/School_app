@@ -26,7 +26,7 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
+                                <th width="50">No</th>
                                 <th>Foto</th>
                                 <th>Judul</th>
                                 <th>Deskripsi</th>
@@ -35,10 +35,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($galleries as $gallery)
+                            @forelse($galleries as $index => $gallery)
                                 @php $image = !empty($gallery->image) && (str_starts_with($gallery->image, 'uploads/') || file_exists(public_path($gallery->image))) ? asset($gallery->image) : asset('landing-page/assets/images/about-right-dec.png'); @endphp
                                 <tr>
-                                    <td>{{ $gallery->id }}</td>
+                                    <td>{{ $galleries->firstItem() + $index }}</td>
                                     <td><img src="{{ $image }}" alt="{{ $gallery->title }}" width="75"
                                             height="50" class="rounded" style="object-fit:cover"></td>
                                     <td>{{ $gallery->title }}</td>

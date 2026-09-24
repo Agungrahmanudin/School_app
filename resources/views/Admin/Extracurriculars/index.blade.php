@@ -35,7 +35,7 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>ID</th>
+                            <th width="50">No</th>
                             <th>Nama</th>
                             <th>Deskripsi</th>
                             <th>Kegiatan/Program</th>
@@ -47,7 +47,7 @@
                     </thead>
 
                     <tbody>
-                        @forelse ($extracurriculars as $item)
+                        @forelse ($extracurriculars as $index => $item)
                             @php
                                 $extraImage = asset('landing-page/assets/images/about-right-dec.png');
 
@@ -64,7 +64,7 @@
                             @endphp
 
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $extracurriculars->firstItem() + $index }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{Str::limit($item->description, 80)}}</td>
 
@@ -124,7 +124,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4 text-muted">
+                                <td colspan="8" class="text-center py-4 text-muted">
                                     Belum ada data ekstrakurikuler.
                                 </td>
                             </tr>

@@ -33,7 +33,7 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th width="50">#</th>
+                            <th width="50">No</th>
                             <th width="120">Foto</th>
                             <th>Judul Berita</th>
                             <th>Kategori</th>
@@ -61,7 +61,7 @@
                                 </td>
                                 <td>
                                     <div class="fw-bold text-dark">{{ Str::limit($item->title, 55) }}</div>
-                                    <small class="text-muted">{{ Str::limit(strip_tags($item->content), 70) }}</small>
+                                    <small class="text-muted">{!! Str::limit(str_replace('&nbsp;', ' ', strip_tags($item->content, '<b><strong><i><em><u>')), 80) !!}</small>
                                 </td>
                                 <td>
                                     <span class="badge bg-light-primary text-primary">{{ $item->category->name ?? 'Umum' }}</span>

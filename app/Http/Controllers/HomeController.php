@@ -24,7 +24,7 @@ class HomeController extends Controller
         $news = News::with('category')->latest()->take(3)->get();
         $galleries = Galleries::latest()->take(3)->get();
         $extracurriculars = Extracurriculars::latest()->take(3)->get();
-        $teachers = Teachers::take(4)->get();
+        $teachers = Teachers::take(3)->get();
 
         $principal = Teachers::where('position', 'LIKE', '%Kepala Sekolah%')
             ->orWhere('position', 'LIKE', '%Kepsek%')
